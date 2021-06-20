@@ -269,7 +269,12 @@
   setTimeout("document.getElementById('lostContent').style.display = ''", 3000);
 
   var lostLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_lostSize.mp4';
-  $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
+  if(productCategory+productId == 'basketball3'){
+    $("#lostVideo").html('<video width="100%" controls autoplay transform: rotate(90deg);><source src="'+popLink+'" type="video/mp4" id=""></video>');
+  }else{
+    $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+popLink+'" type="video/mp4" id=""></video>');
+  }
+
 
   var persona = localStorage.getItem('persona');
   if(persona == 0){
