@@ -223,19 +223,19 @@
     data["getOther"] = localStorage.getItem('getOther');
     data["period"] = period;
 
-    for (i = 0; i < formData.length-1; i = i+2){
+    for (i = 0; i < formData.length; i++){
       keyname = formData[i]["name"];
-      value = formData[i+1]["value"];
+      value = formData[i]["value"];
       data[keyname] = value;
     }
     console.log(data);
 
-    // var dataList = localStorage.getItem('dataList').split(",");
-    // for (i = 0; i < dataList.length; i++){
-    //   keyname = dataList[i];
-    //   value = dataList[i+1];
-    //   data[keyname] = value;
-    // }
+    var dataList = localStorage.getItem('dataList').split(",");
+    for (i = 0; i < dataList.length - 1; i = i + 2){
+      keyname = dataList[i];
+      value = dataList[i+1];
+      data[keyname] = value;
+    }
 
     $.get(
       'https://script.google.com/macros/s/AKfycbyb81ilifrrK88L8SvIj1SdbLCQGnu8soXNCz6E11d_mP6uTrhFStx-m28HmoPYrVNMrA/exec', 
