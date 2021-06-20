@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pepper Shoe - 熱門商品</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+</head>
+
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <video width="100%" controls autoplay>
+        <source src="../video/neutral/hotProduct_AN.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+        <div class = "col-sm-6" style = "padding-top: 10px;">
+          <ul class = "head-list" id="head">
+            <li>
+              <a href="funcSelect.html">
+                <img src="../img/menu.png" alt="" width="25px">
+                <span style="margin-left: 10px;">功能選單</span>
+              </a>
+            </li>
+            <li id="iflogin" style="display: none;">
+              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
+            </li>
+            <li id="nologin" style="display: none;">
+              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+        <ul class = "nav nav-pills nav-fill">
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
+              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
+              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
+            </div>
+          </li>
+          <li class = "nav-item pageactive" >
+            <a class="nav-link" href="hotProduct.html">熱銷商品</a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" href="allProduct.html">全部商品</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="">
+        <div style="margin-top: 20px; font-size: 24px;">
+          <span>運動分類</span>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('run')">慢跑</button>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('hiking')">登山健行</button>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('basketball')">籃球</button>
+        </div>
+
+        <div class="row productCard">
+          <div class="card" onclick="getProduct('hiking','1', 'hotProduct')">
+            <img src="https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/e/3/e3217c57-bb73-41c9-b607-56de2a61ff79_8492143.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">【女】抓地緩震耐磨登山鞋 QUECHUA MH500e</h5><br><br>
+              <span class="card-text">NT 2999</span>
+            </div>
+          </div>
+          
+          <div class="card" onclick="getProduct('basketball','2', 'hotProduct')">
+            <img src="../img/impact_2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nike Air Max Impact 2</h5><br><br><br>
+              <span class="card-text" >NT 2790</span>
+            </div>
+          </div>
+        
+          <div class="card" onclick="getProduct('run','2', 'hotProduct')">
+            <img src="https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/3/4/34342521-a651-48f6-8d59-47677f30132b_8558979.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">【女】支撐透氣跑步鞋 KALENJI RUN BREATH</h5><br><br>
+              <span class="card-text">NT 1999</span>
+            </div>
+          </div>
+
+          <div class="card" onclick="getProduct('basket','5', 'hotProduct')">
+            <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/95c95311-323d-4b6c-a2b6-ed8525caf93a/renew-elevate-%E7%B1%83%E7%90%83-pbNDZ0.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Nike Renew Elevate</h5>
+              <span class="card-text">NT 1749</span>
+            </div>
+          </div>
+
+          <div class="card" onclick="getProduct('hiking','4', 'hotProduct')">
+            <img src="https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/4/3/4326ea86-5e68-47ae-b8a8-1a0e701685f2_8319097.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">【男】防水緩震登山鞋 FORCLAZ TREK 200</h5><br><br>
+              <span class="card-text" >NT 2499</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+​<script>
+  var persona = localStorage.getItem('persona');
+  if(persona == 0){
+    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+  }else{
+    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+  }
+
+</script>
+</body>
+</html>
+​

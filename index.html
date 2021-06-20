@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>機器人互動之線上實驗</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+  <style>
+    .container{
+      margin-top: 20px;
+      /* border: 1px solid darkgrey; */
+      border-radius: 4px;
+      padding: 40px; 
+      margin-bottom: 40px;
+      background-color: rgb(250, 250, 250);
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h3>機器人互動之線上實驗</h3>
+      <hr>
+      <p>您好，我是政大資管所的張卜方</p>
+      <p>
+        感謝您在百忙之中撥空填寫此學術研究問卷，本研究主要為探討人型機器人在實體商店中的溝通表達方式對消費者的影響，因此過程中您將實際操作網頁以模擬線下與機器人互動的情況，並觀看多段影片（需開啟聲音）、回答相關問題。
+      </p>
+      <p>【實驗過程】<br>
+        1. 在這個實驗中，您將挑選特定種類的鞋子作為主要的任務，並操作網頁來瀏覽商品完成購買，而在購買的過程中可能會遇到需要協助的情況。<br>
+        2. 機器人為商店內的店員角色，其觸發行為會以影片呈現，請您完整觀看影片內容再進行下一步操作。<br>
+        3. 完成購買任務之後，請根據您的感受繼續填寫後續的問卷。<br>
+        4. 另外，為了畫面與順暢地操作，建議以電腦進行作答。
+      </p>
+      <p>【問卷完成時間】大約需花費 20 分鐘左右。</p>
+      <p>【問卷抽獎】若您有意願參與抽獎，請在最後的問卷中留下電子信箱，將作為抽獎的依據。</p>
+      <p>此問卷為不記名問卷，資料將嚴謹保密且不對外公開，僅作學術研究之用途。</p>
+      <p>敬祝 事事順心！</p>
+
+      <p>
+        國立政治大學資訊管理學系碩士班<br>
+        研究生：張卜方 108356026@nccu.edu.tw<br>
+        指導教授：簡士鎰 教授、林怡伶 教授
+      </p>
+      <p>
+      </p>
+      <button class="btn" style="margin-top: 5%; background-color:#FAB00C; width:100%; height: 50px;font-size: 24px; text-align: center; color: white; margin-top:3%;" onclick="next();">開始進行</button>
+    </div>
+    
+</body>
+<script>
+  localStorage.clear();
+  function next(){
+    route('./pretest.html');
+  }
+</script>
+</html>

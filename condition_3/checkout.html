@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pepper Shoe - 結帳</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+  <style>
+    a:hover{
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+​  <div class="row">
+      <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" id=checkoutVideo></div>
+    <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+      </div>
+      <a href="javascript:history.back()">
+        <div style="margin-top: 15px; font-size: 20px; padding: 0 1.5%;">
+          < 回上頁
+        </div>
+      </a>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-sm-8" style="border-radius:5px;box-shadow:4px 4px rgba(20%,20%,40%,0.5);background-color:#F7F7F6; padding: 30px 80px; margin: 0 auto;">
+          <h2 style="text-align:center; margin-bottom:50px; font-weight: bold;">
+            本次消費商品明細
+          </h2>
+          <div class="row" style="margin-top: 10px;" >
+            <img src="" alt="..." width="90px" height="90px" id="productImg">
+            <div class="col-sm-7" style="font-size: 18px;" id="product"></div>
+          </div>
+          <div class="row" style="margin-top: 30px;" id="additional">
+            <img src="" alt="..." width="90px" height="90px" id="addImg">
+            <div class="col-sm-7" style="font-size: 18px;" id="add"></div>   
+          </div>
+          <p style="font-size: 18px; margin-top: 20px; display: flex; justify-content: flex-end;" id="total">
+            總價：
+          </p>
+        </div>
+
+        <a href="thank.html" type="button" class="btn" style="margin: 0 auto; margin-top: 20px; background-color:#FAB00C; width:66%; height: 50px;font-size: 20px; text-align: center; color: white;">確認結帳</a>
+      </div>
+    </div>
+  </div>
+    
+<script type="text/javascript">
+  var productCategory = localStorage.getItem('productCategory');
+  var productId = localStorage.getItem('productId');
+  var recommendCategory = localStorage.getItem('recommendCategory');
+  var recommendId = localStorage.getItem('recommendId');
+  var productName = localStorage.getItem('productName');
+  var productPrice = localStorage.getItem('productPrice');
+  var productImg = localStorage.getItem('productImg');
+  var addProduct = localStorage.getItem('addProduct');
+  var addName = '';
+  var addImg = '';
+  var addPrice = '';
+
+  if(productCategory == recommendCategory && productId == recommendId){
+    localStorage.setItem('getRecommend', '1');
+  }else{
+    localStorage.setItem('getOther', '1');
+  }
+
+  $('#test').append(addProduct);
+
+  $("#productImg").attr("src", productImg);
+  $('#product').append(productName + '<p style=" color: #FAB00C; font-weight: bold; margin-top: 10px;">NT$ '+ productPrice +'</p>');
+
+  if (addProduct == 1){
+    if(productCategory == 'run'){
+      addImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/9df78eab33525d08d6e5fb8d27136e95/b/d/bd39f9cc-ecbe-4640-be50-f165c1d52b11_8547746.jpg';
+      addName = '跑步水壺腰帶 KALENJI';
+      addPrice = '299';
+    }else if(productCategory == 'hiking'){
+      addImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/b/c/bcfc02e2-63ec-47a1-bf82-c80327737569_8526270.jpg';
+      addName = '高機能防曬防水透氣遮陽帽 FORCLAZ TREK 900';
+      addPrice = '599';
+    }else{
+      addImg = 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b12723dc-4b2c-469c-9e35-c8603bb558c8/everyday-%E4%B8%AD%E7%AD%92%E7%B1%83%E7%90%83%E8%A5%AA-t6mW9X.png';
+      addName = 'Everyday 中筒籃球襪';
+      addPrice = '550';
+    }
+    $("#addImg").attr("src", addImg);
+    $('#add').append(addName + '<p style=" color: #FAB00C; font-weight: bold; margin-top: 10px;">NT$ '+ addPrice +'</p>');
+
+    $('#total').append('<span style="font-size: 30px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+(parseInt(productPrice)+parseInt(addPrice))+'</span>')
+  }else{
+    $('#additional').attr("style", "display: none;"); 
+    $('#total').append('<span style="font-size: 30px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+parseInt(productPrice)+'</span>')
+  }
+
+  var checkoutLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_checkout_'+addProduct+'.mp4';
+  $("#checkoutVideo").html('<video width="100%" controls autoplay><source src="'+checkoutLink+'" type="video/mp4" id=""></video>');
+  
+  var persona = localStorage.getItem('persona');
+  if(persona == 0){
+    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+  }else{
+    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+  }
+</script>
+</body>
+</html>
+​

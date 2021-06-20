@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pepper Shoe - 問題協助</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+  <style>
+    .list{
+      padding: 10px; 
+      background-color: rgb(226, 226, 226); 
+      border-radius: 5px; 
+      font-size: 18px; 
+      color: white;
+      margin-right: 10px;
+    }
+    .price{
+      font-size: 20px; 
+      color: #FAB00C; 
+      font-weight: bold; 
+      margin-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <video width="100%" controls autoplay>
+        <source src="../video/intimate/assistance.mp4" type="video/mp4" id="">
+      </video>
+    </div>
+    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0px 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+        <div class = "col-sm-6" style = "padding-top: 10px;">
+          <ul class = "head-list" id="head">
+            <li>
+              <a href="funcSelect.html">
+                <img src="../img/menu.png" alt="" width="25px">
+                <span style="margin-left: 10px;">功能選單</span>
+              </a>
+            </li>
+            <!-- <li id="iflogin" style="display: none;">
+              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
+            </li>
+            <li id="nologin" style="display: none;">
+              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+        <ul class = "nav nav-pills nav-fill">
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
+              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
+              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
+            </div>
+          </li>
+          <li class = "nav-item" >
+            <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" href="./allProduct.html">全部商品</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="">
+        <a href="javascript:history.back()">
+          <div style="margin-top: 20px; font-size: 20px;">
+            < 回上頁
+          </div>
+        </a>
+        <div style="margin-top: 3%; width: 50%; margin: 0 auto;">
+          <div class="form-group row">
+            <label id="problemSelect" style="font-size: 18px">問題種類：</label>
+            <select id="lostSize" class="form-control form-control-lg" >
+              <option selected>商品缺少尺寸</option>
+            </select>
+          </div>
+          <div class="form-group row" style="margin-top: 5%">
+            <label id="problemCate" style="font-size: 18px">商品種類：</label>
+            <select id="category" class="form-control form-control-lg"></select>
+          </div>
+          <div class="form-group row" style="margin-top: 5%">
+            <label id="problemId" style="font-size: 18px">商品型號：</label>
+            <select id="pid" class="form-control form-control-lg" ></select>
+          </div>
+          <button type="button" class="btn btn-lg" style="background-color: #FAB00C; color: white; width: 100%; margin-top: 5%;" onclick="lostSize()" id="findShoe">送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  ​<script>
+    var productCategory = localStorage.getItem('productCategory');
+    var productId = localStorage.getItem('productId');
+
+    $(function() {        
+      var category=['慢跑', '登山健行', '籃球'];
+      var categorylist=['run', 'hiking', 'basketball'];
+      var list = "";
+      var items = new Array();
+      for(var i = 0; i < category.length; i++){
+        list=list+'<option value = '+ categorylist[i] +' id = '+ categorylist[i] +'>'+category[i]+'</option>';
+        items[i] = new Array();
+      }
+      $("#category").html(list);
+
+      $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
+        console.log(data);
+        var d = data.feed.entry;
+        
+
+        for(var i = 0; i < category.length; i++){
+          for(var j in d) {
+            var item = {};
+            if(d[j].gsx$category.$t == categorylist[i]){
+              item.category = d[j].gsx$category.$t;
+              item.id = d[j].gsx$id.$t;
+              item.name = d[j].gsx$name.$t;
+              console.log(item);
+              items[i].push(item.name);
+            }
+          }
+          console.log(items[i]);
+        }
+
+        console.log(items);  
+        $('#'+productCategory).attr("selected", "true");
+
+        $("#category").change(function(){
+          index = this.selectedIndex;
+          var list="";
+          for(var i = 0; i < items[index].length; i++){
+            list = list+'<option value='+ (i+1) +' id='+productCategory+(i+1) +'>'+ items[index][i] +'</option>';
+          }
+          $("#pid").html(list);
+        });
+        //更改型號清單
+        $("#category").change();
+        //標注歷史資料
+        $('#'+productCategory+productId).attr("selected", "true");  
+      });
+    });
+
+    function lostSize(){
+      findcategory = $('#category').val();
+      findpid = $('#pid').val();
+      localStorage.setItem('findCategory', findcategory);
+      localStorage.setItem('findpid', findpid);
+      setTimeout("window.location.href='lostSize.html?category='+ findcategory +'&id='+findpid;", 1000);
+    }
+
+    var persona = localStorage.getItem('persona');
+    if(persona == 0){
+      $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+    }else{
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+    }
+	</script>
+</body>
+</html>
+​

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pepper Shoe - 加購商品</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+</head>
+
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3" id="addProduct"></div>
+    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0px 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+        <div class = "col-sm-6" style = "padding-top: 10px;">
+          <ul class = "head-list" id="head">
+            <li>
+              <a href="funcSelect.html">
+                <img src="../img/menu.png" alt="" width="25px">
+                <span style="margin-left: 10px;">功能選單</span>
+              </a>
+            </li>
+            <!-- <li id="iflogin" style="display: none;">
+              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
+            </li>
+            <li id="nologin" style="display: none;">
+              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+        <ul class = "nav nav-pills nav-fill">
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
+              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
+              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
+            </div>
+          </li>
+          <li class = "nav-item" >
+            <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" href="./allProduct.html">全部商品</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="">
+        <a href="javascript:history.back()">
+          <div style="margin-top: 20px; font-size: 20px;">
+            < 回上頁
+          </div>
+        </a>
+        <h3 style="margin-top: 20px; color:darkgrey">推薦加購商品</h3>
+        <div class="row" style="margin-top: 3%;">
+          <div class="col-sm-6">
+            <img src="" alt="..." width="240px" style="display: block; margin-left: auto; margin-right: auto;" id="productImg">
+          </div>
+          <div class="col-sm-6" style="padding-left: 20px; word-break:break-all">
+            <h4 id="addName"></h4><br>
+            <h5 id="addTag"></h5>
+            <p style="font-size: 20px;" id="addPrice">價錢：</p>
+            <div class="row" style="margin-top: 50px; display: flex; justify-content: space-between;">
+              <button type="button" class="btn btn-lg btn-outline-dark" style="width: 45%;" onclick="checkout(0)">跳過，直接結帳</button>
+              <button onclick="checkout(1)" type="button" class="btn btn-lg" style="background-color: #FAB00C; color: white; width: 45%;">加購商品前往結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  ​<script>
+    var productCategory = localStorage.getItem('productCategory');
+    var productImg = '';
+    var productName = '';
+    var hashtag = '';
+    var price = '';
+    var addLink = '';
+
+    $(function() {        
+      if(productCategory == 'run'){
+        productImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/9df78eab33525d08d6e5fb8d27136e95/b/d/bd39f9cc-ecbe-4640-be50-f165c1d52b11_8547746.jpg';
+        productName = '跑步水壺腰帶 KALENJI';
+        hashtag = '500ml 水瓶容量 / 輕盈性 / 合身穩定';
+        price = '299';
+        addLink = '../video/intimate/run_addProduct_AI.mp4';
+      }else if(productCategory == 'hiking'){
+        productImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/b/c/bcfc02e2-63ec-47a1-bf82-c80327737569_8526270.jpg';
+        productName = '高機能防曬防水透氣遮陽帽 FORCLAZ TREK 900';
+        hashtag = '遮陽大帽檐 / 防紫外線 / 面料透氣 / 防水面料';
+        price = '599';
+        addLink = '../video/intimate/hiking_addProduct_AI.mp4';
+      }else{
+        productImg = 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b12723dc-4b2c-469c-9e35-c8603bb558c8/everyday-%E4%B8%AD%E7%AD%92%E7%B1%83%E7%90%83%E8%A5%AA-t6mW9X.png';
+        productName = 'Everyday 中筒籃球襪';
+        hashtag = '足底緩震 / 足弓支撐感 / 透氣乾爽 / 包覆腳踝和小腿下半部';
+        price = '550';
+        addLink = '../video/intimate/basketball_addProduct_AI.mp4';
+      }
+      $("#productImg").attr("src", productImg);
+      $('#addName').text(productName);
+      $('#addTag').text(hashtag);
+      $('#addPrice').append('<span style="font-size: 40px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+ price +'</span>');
+      $('#addProduct').append('<video width="100%" controls autoplay><source src="'+addLink+'" type="video/mp4"></video>');
+    });
+
+    function checkout(addProduct){
+      if(addProduct == 0){
+        localStorage.setItem('addProduct', 0);
+        window.location.href = 'checkout.html?add=0';
+      }else{
+        localStorage.setItem('addProduct', 1);
+        window.location.href = 'checkout.html?add=1';
+      }
+    }
+
+    var persona = localStorage.getItem('persona');
+    if(persona == 0){
+      $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+    }else{
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+    }
+	</script>
+</body>
+</html>
+​

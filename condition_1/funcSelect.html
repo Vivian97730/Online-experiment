@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+  <title>Pepper Shoe - 功能選擇</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+  
+</head>
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <video width="100%" controls autoplay>
+        <source src="../video/neutral/funcSelect_PN.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
+      <div class="">
+        <div class="row" style="border-radius:5px; height: 100%;background-color:#F7F7F6; padding: 20px; text-align: center;">
+          <div class="col-sm-4" style="border-right: solid 3px grey;">
+            <div style="width: 100%;">
+              <img src="../img/walk.png" alt="" width = "250px">
+            </div>
+            <span style="font-weight: bold; font-size: 3.5em; margin-left: auto; margin-right: auto;">Pepper Shoe</span>
+            <div style="width: 100%; text-align: center; margin-top: 30px;">
+              <button id="explore" class="btn btn-lg btn-outline-dark" style="width: 200px;" onclick="route('./allProduct.html');">瀏覽線上目錄</button>
+            </div>
+          </div>
+          <div class="col-sm-4" style="border-right: solid 3px grey;">
+            <div style="width: 100%;">
+              <img src="../img/request.png" alt="" width = "250px">
+            </div>
+            <span style="font-weight: bold; font-size: 3.5em; margin-left: auto; margin-right: auto;">Assistance<br><br></span>
+            <div style="width: 100%; text-align: center; margin-top: 30px;">
+              <button id="explore" class="btn btn-lg btn-outline-dark" style="width: 200px;" onclick="route('./assistance.html');">問題協助</button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <img src="../img/carts.png" alt="" width="200px" style="margin-top: 10px;">
+            <div style="font-weight: bold; font-size: 3.5em; margin: 30px auto 30px auto; ">Check <br> Out</div>
+            <div style="width: 100%; text-align: center; margin-top: 30px;">
+              <button onclick="isSelect()" class="btn btn-lg btn-outline-dark" style="width: 200px;">我要結帳</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#noProduct" id="showModal" hidden>Open Modal</button>
+      <div class="modal fade" id="noProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+              <h4>您尚未選擇欲購買的商品</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">關閉</button>
+            <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="javascript:location.href='allProduct.html'">前往商品列表</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+​<script>
+  var persona = localStorage.getItem('persona');
+  if(persona == 0){
+    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+  }else{
+    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+  }
+  
+  function isSelect(){
+    var productId = localStorage.getItem('productId');
+    if(productId == null){
+      $('#showModal').click();
+    }else{
+      route('./addProduct.html');
+    }
+  }
+</script>
+</body>
+</html>
+​

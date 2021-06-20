@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pepper Shoe - 商品分類</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RXGJ28TE8T');
+  </script>
+  <style>
+    .active{
+      background-color: darkgrey;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" id="cateVideo"></div>
+    <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+        <div class = "col-sm-6" style = "padding-top: 10px;">
+          <ul class = "head-list" id="head">
+            <li>
+              <a href="funcSelect.html">
+                <img src="../img/menu.png" alt="" width="25px">
+                <span style="margin-left: 10px;">功能選單</span>
+              </a>
+            </li>
+            <li id="iflogin" style="display: none;">
+              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
+            </li>
+            <li id="nologin" style="display: none;">
+              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+        <ul class = "nav nav-pills nav-fill">
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle pageactive" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
+              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
+              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
+            </div>
+          </li>
+          <li class = "nav-item" >
+            <a class="nav-link" href="hotProduct.html">熱銷商品</a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" href="allProduct.html">全部商品</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="">
+        <div style="margin-top: 20px; font-size: 24px;">
+          <span>運動分類</span>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('run')" id="runbtn">慢跑</button>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('hiking')" id="hikingbtn">登山健行</button>
+          <button type="button" class="btn btn-lg btn-outline-secondary" style="margin-left: 20px;" onclick="getCategory('basketball')" id="basketballbtn">籃球</button>
+        </div>
+
+        <div class="row productCard"></div>
+      </div>
+    </div>
+  </div>
+    
+  ​<script>
+    var categoryIntro = window.location.search.split('=')[1];
+    // var categoryIntro = localStorage.getItem('categoryIntro');
+    $("#" + categoryIntro + "btn").addClass("active");
+    console.log(categoryIntro);
+
+    $(function() {
+      $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
+        console.log(data);
+        var d = data.feed.entry;
+        var items = [];
+
+        for(var i in d) {
+          var item = {};
+          item.category = d[i].gsx$category.$t;
+          item.id = d[i].gsx$id.$t;
+          item.gender = d[i].gsx$gender.$t;
+          item.name = d[i].gsx$name.$t;
+          item.price = d[i].gsx$price.$t;
+          item.imglink = d[i].gsx$imglink.$t;
+          if(item.category == categoryIntro){
+            items.push(item);
+          }
+        }
+
+        for(var i in items) {
+          if(items[i].gender.length > 2){
+            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\,\'category\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【男/女】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
+          }else{
+            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'category\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【'+items[i].gender[0]+'】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
+          }
+          
+          $('.productCard').append(Card);          
+        }
+      });
+
+      var cateLink = '';
+      if(categoryIntro == 'run'){
+        cateLink = '../video/neutral/run_PN.mp4';
+      }else if(categoryIntro == 'hiking'){
+        cateLink = '../video/neutral/hiking_PN.mp4';
+      }else{
+        cateLink = '../video/neutral/basketball_PN.mp4';
+      }
+
+      $("#cateVideo").append('<video width="100%" controls autoplay><source src="'+cateLink+'" type="video/mp4" id=""></video>');
+    });
+
+    var persona = localStorage.getItem('persona');
+    if(persona == 0){
+      $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+    }else{
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+    }
+</script>
+</body>
+</html>
+​

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>機器人互動之線上實驗 - 任務</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+  <style>
+    .container{
+      margin-top: 40px;
+      /* border: 1px solid darkgrey; */
+      border-radius: 4px;
+      padding: 40px; 
+      margin-bottom: 40px;
+      background-color: rgb(250, 250, 250);
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h3>任務說明</h3>
+      <hr>
+      <h5>
+        在這個實驗中，您將為朋友挑選鞋子作為他/她兩個禮拜後的生日禮物，以下為目標對象的個人資訊：
+      </h5>
+      <div class="row" style="margin-top: 5%;">
+        <div class="col-sm-6" id="persona" style="text-align: center;"></div>
+        <div class="col-sm-6" id="personaInfo" style="font-size: 16px;"></div>
+      </div>
+      <button class="btn" style="margin-top: 5%; background-color:#FAB00C; width:100%; height: 50px;font-size: 24px; text-align: center; color: white; margin-top:3%;" onclick="go();">進入商店</button>
+    </div>
+    
+</body>
+<script>
+  function go(){
+    route('./condition_'+condition+'/index.html');
+  }
+  var condition = '';
+  var persona = '';
+  persona = Math.floor(Math.random()*2);
+  condition = Math.floor(Math.random()*4) + 1;
+  if(persona == 0){
+    $('#persona').append('<img src="./img/persona_hiking.png" alt="" width="40%">');
+    $('#personaInfo').append('<p>Anna</p><p>34 歲 科技業上班族</p><p>在休假時我喜歡到山林間遊走，清幽的環境與濕氣讓人心曠神怡。放慢腳步，看著溪水的流動、觀察山林裡的花草樹木，在山裡享受大自然的奧妙，在庸碌的生活中找到一絲喘息的空間。</p>');
+  }else{
+    $('#persona').append('<img src="./img/persona_basketball.png" alt="" width="40%">');
+    $('#personaInfo').append('<p>Andy</p><p>21 歲 大學生</p><p>我不是在球場，就是在往球場的路上。籃球可以說是我全部的生活，幸運的是我有一群志同道合的夥伴，一起揮灑汗水，一起追尋得分的成就感。希望有一天我可以在球場上馳騁獲得眾人的歡呼。</p>');
+  }
+  localStorage.setItem('persona', persona);
+</script>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Questionnaire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    .container{
+      margin-top: 40px;
+      /* border: 1px solid darkgrey; */
+      border-radius: 4px;
+      padding: 40px; 
+      margin-bottom: 40px;
+      background-color: rgb(250, 250, 250);
+    }
+    form{
+      font-size: 20px;
+    }
+    .customalign{
+      display: flex; 
+      justify-content: space-between; 
+    }
+    .form-group{
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .itemlabel{
+      color: rgb(99, 99, 99);
+    }
+    input[type='radio'] {
+      width:20px;
+      height:20px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <form class="needs-validation" novalidate id="demoquestionnaire">
+        <div id="demo">
+          <h4 style="background-color: #FAB00C; color: white">個人資訊</h4>
+          <b style="color:red">** 所有問題皆為必填選項</b>
+          <div style="margin-top: 40px;">7-1 請問您的性別是？</div>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="male" value="M">
+              <label class="form-check-label" for="male"> 生理男</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="female" value="F">
+              <label class="form-check-label" for="female"> 生理女</label>
+            </div>
+          </div>
+          <div>7-2 請問您的年齡是？</div>
+          <div class="form-group customalign">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age1" value="20">
+              <label class="form-check-label" for="age1"> < 20 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age2" value="25">
+              <label class="form-check-label" for="age2"> 21 - 25 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age3" value="30">
+              <label class="form-check-label" for="age3"> 26 - 30 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age4" value="35">
+              <label class="form-check-label" for="age4"> 31 - 35 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age5" value="40">
+              <label class="form-check-label" for="age5"> 36 - 40 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age6" value="45">
+              <label class="form-check-label" for="age6"> 41 - 45 歲</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="age" id="age7" value="46">
+              <label class="form-check-label" for="age7"> > 46 歲</label>
+            </div>
+          </div>
+          <div>7-3 請問您的教育程度為何？</div>
+          <div class="form-group customalign">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="education" id="highschool" value="highschool">
+              <label class="form-check-label" for="highschool"> 高中（含）以下</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="education" id="university" value="university">
+              <label class="form-check-label" for="university"> 大學</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="education" id="master" value="master">
+              <label class="form-check-label" for="master"> 碩士</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="education" id="doctor" value="doctor">
+              <label class="form-check-label" for="doctor"> 博士（含）以上</label>
+            </div>
+          </div>
+          <div>7-4 請問您對於使用電腦及科技產品的熟悉程度為何？</div>
+          <div class="form-group">
+            <div class="form-group customalign">
+              <label class="itemlabel">完全不熟悉</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="com_F" id="com_F1" value="1">
+                <label class="form-check-label" for="com_F1"> 1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="com_F" id="com_F2" value="2">
+                <label class="form-check-label" for="com_F2"> 2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="com_F" id="com_F3" value="3">
+                <label class="form-check-label" for="com_F3"> 3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="com_F" id="com_F4" value="4">
+                <label class="form-check-label" for="com_F4"> 4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="com_F" id="com_F5" value="5">
+                <label class="form-check-label" for="com_F5"> 5</label>
+              </div>
+              <label class="itemlabel">非常熟悉</label>
+            </div>
+          </div>
+          <div>7-5 請問您對於使用機器人的熟悉程度為何？</div>
+          <div class="form-group">
+            <div class="form-group customalign">
+              <label class="itemlabel">完全不熟悉</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="r_F" id="r_F1" value="1">
+                <label class="form-check-label" for="r_F1"> 1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="r_F" id="r_F2" value="2">
+                <label class="form-check-label" for="r_F2"> 2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="r_F" id="r_F3" value="3">
+                <label class="form-check-label" for="r_F3"> 3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="r_F" id="r_F4" value="4">
+                <label class="form-check-label" for="r_F4"> 4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="r_F" id="r_F5" value="5">
+                <label class="form-check-label" for="r_F5"> 5</label>
+              </div>
+              <label class="itemlabel">非常熟悉</label>
+            </div>
+          </div>
+          <div>7-6 請問您使用人型機器人的頻率為何？</div>
+          <div class="form-group">
+            <div class="form-group customalign">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frequency" id="frequency1" value="5">
+                <label class="form-check-label" for="frequency1"> 每一個月使用超過一次</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frequency" id="frequency2" value="4">
+                <label class="form-check-label" for="frequency2"> 每三個月使用超過一次</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frequency" id="frequency3" value="3">
+                <label class="form-check-label" for="frequency3"> 每半年使用超過一次</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frequency" id="frequency4" value="2">
+                <label class="form-check-label" for="frequency4"> 每一年使用超過一次</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frequency" id="frequency5" value="1">
+                <label class="form-check-label" for="frequency5"> 從未使用過</label>
+              </div>
+            </div>
+          </div>
+          <div>8 若有意願參加抽獎，請留下您完整的信箱地址</div>
+          <input type="email" class="form-control form-group" id="email" name="email" placeholder="您的電子信箱">
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <div id="novalid" style="color: red; display: none">您有未填選項</div>
+          <button type="button" class="btn btn-outline-secondary" style="display: none;" id="previous" onclick="back()">上一頁</button>
+          <button type="submit" class="btn" style="background-color: #FAB00C; color: white;" id="submit">送出</button>
+        </div>
+      </form>
+    </div>
+</body>
+<script>
+  // Disable form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Get the forms we want to add validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById('novalid').style.display = '';
+          }else{
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+
+
+  $('#submit').on('click', function() {
+    var formData = $('#demoquestionnaire').serializeArray();
+    // var dataList = JSON.stringify(formData);
+    //console.log(formData);
+    var data = localStorage.getItem('data');
+    var condition = localStorage.getItem('condition');
+    data["qTime"] = Date.now();
+    data["condition"] = condition;
+    data["addProduct"] = localStorage.getItem('addProduct');
+    data["getRecommend"] = localStorage.getItem('getRecommend');
+    data["getOther"] = localStorage.getItem('getOther');
+
+    for (i = 0; i < formData.length; i++){
+      keyname = formData[i]["name"];
+      value = formData[i]["value"];
+      data[keyname] = value;
+    }
+
+    console.log(data);
+
+    $.get(
+      'https://script.google.com/macros/s/AKfycbwIqPf7OLyRIunNnSJM-DVSpBRsN2ZWLvef-xAxQGfqnVPSRUpgYKFN95CIfG2BTsKpGw/exec', 
+      data,
+      function(response) {
+        if(response == "成功"){
+          // window.location.href = "success.html";
+          // localStorage.clear();
+        }
+      }
+    );
+
+  });
+</script>
+</html>

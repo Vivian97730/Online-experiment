@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>機器人互動之線上實驗 - 說明</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+  <style>
+    .container{
+      margin-top: 40px;
+      /* border: 1px solid darkgrey; */
+      border-radius: 4px;
+      padding: 40px; 
+      margin-bottom: 40px;
+      background-color: rgb(250, 250, 250);
+    }
+    p{
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h3>實驗頁面說明</h3>
+      <hr>
+      <p>
+        1. 以下為主要實驗畫面，請操作<b style="color:#F9C005">黃色區域畫面</b>並觀看影片中機器人所呈現的行為與說話內容（影片預設為自動播放，可以重複觀看）。<br>
+        <b>🙏🙏請耐心觀看整段影片的內容，再進行下一步操作🙏🙏</b>
+      </p>
+      <img src="./img/instruction_main.png" alt="" width="80%" style="margin: 0 auto;">
+      <p style="margin-top: 5%; font-size: 18px;">
+        2. 過程中，將會透過文字敘述來模擬線下購物的使用情況。
+      </p>
+      <img src="./img/instruction_simulate.png" alt="" width="80%" style="margin: 0 auto;">
+      <h3 style="margin-top: 5%;">功能說明</h3>
+      <hr>
+      <p>
+        為了模擬在實體商店內選擇商品的情況，<b style="color: red;">按下「尋找商品」按鈕即假設有意願購買該雙鞋子，並將它拿在手上</b>，而後續將會以拿在手上的鞋子進行購物流程。<br>
+        <b>因此按下「尋找商品」按鈕後，為模擬情況消費者離開機器人前往取得商品，而機器人會自動回到功能頁面。</b>
+      </p>
+      <img src="./img/instruction_find.png" alt="" width="80%">
+      <button class="btn" style="margin-top: 5%; background-color:#FAB00C; width:100%; height: 50px;font-size: 24px; text-align: center; color: white; margin-top:3%;" onclick="start();">下一頁</button>
+    </div>
+</body>
+<script>
+  function start(){
+    var now = Date.now();
+    localStorage.setItem('startTime', now);
+    route('persona.html');
+  }
+</script>
+</html>
