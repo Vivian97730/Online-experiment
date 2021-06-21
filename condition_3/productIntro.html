@@ -11,13 +11,13 @@
   <script src="../main.js"></script>
   <link rel="stylesheet" href="../main.css">
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS79Y419WQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-RXGJ28TE8T');
+    gtag('config', 'G-SS79Y419WQ');
   </script>
   <style>
     .tag{
@@ -40,6 +40,7 @@
   <div class="row" style="margin-top: 1%;">
     <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
+  <div style="color: #FAB00C; margin-left: 2%;">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-md-3" id=introVideo></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
@@ -147,7 +148,7 @@
   var getLost = localStorage.getItem('getLost');
   var robotIntro = '';
   var introLink = '';
-  var pName = '';
+  var productName = '';
   var pPrice = '';
   var imgLink = '';
 
@@ -176,7 +177,7 @@
       }
       console.log(robotIntro);
       localStorage.setItem('robotIntro', robotIntro);
-      pName = item.name;
+      productName = item.name;
       pPrice = item.price;
       imgLink = item.imglink;
 
@@ -211,13 +212,14 @@
       $("#introVideo").html('<video width="100%" controls autoplay><source src="'+findLink+'" type="video/mp4" id="cateVideo"></video>');
       localStorage.setItem('productCategory', productCategory);
       localStorage.setItem('productId', productId);
-      localStorage.setItem('productName', pName);
+      localStorage.setItem('productName', productName);
       localStorage.setItem('productPrice', pPrice);
       localStorage.setItem('productImg', imgLink);
+      taskinfo();
       if(getLost != 1){
         setTimeout("document.getElementById('showLost').click()", 4500);
       }else{
-        setTimeout("window.location.href = 'funcSelect.html'", 4500);
+        setTimeout("window.location.href = 'funcSelect.html'", 5000);
       }
     }
   }
@@ -229,12 +231,34 @@
 
   document.getElementById("intro").style.display = 'block';
 
-  var persona = localStorage.getItem('persona');
-  if(persona == 0){
-    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
-  }else{
-    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+  function taskinfo(){
+    var pCategory = localStorage.getItem('productCategory');
+    var pName = localStorage.getItem('productName');
+    var selection = '';
+    if(pCategory == 'run'){
+      var cate = '慢跑';
+    }else if(pCategory == 'hiking'){
+      var cate = '登山健行';
+    }else{
+      var cate = '籃球';
+    }
+
+    if (pName != null && pCategory != null){
+      selection = '而您目前選擇的是'+cate+'鞋 ['+pName+']'
+    }else{
+      selection = '而您目前尚未選擇商品'
+    }
+
+    var persona = localStorage.getItem('persona');
+    if(persona == 0){
+      $('#taskInfo').html('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子，'+selection+'</p>');
+    }else{
+      $('#taskInfo').html('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子，'+selection+'</p>');
+    }
   }
+
+  //initialize
+  taskinfo();
 </script>
 </body>
 </html>

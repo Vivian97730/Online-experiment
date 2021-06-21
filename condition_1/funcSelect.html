@@ -14,13 +14,13 @@
   <script src="../main.js"></script>
   <link rel="stylesheet" href="../main.css">
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS79Y419WQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-RXGJ28TE8T');
+    gtag('config', 'G-SS79Y419WQ');
   </script>
   
 </head>
@@ -28,6 +28,7 @@
   <div class="row" style="margin-top: 1%;">
     <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
+  <div style="color: #FAB00C; margin-left: 2%;">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-md-3">
       <video width="100%" controls autoplay>
@@ -41,7 +42,7 @@
             <div style="width: 100%;">
               <img src="../img/walk.png" alt="" width = "250px">
             </div>
-            <span style="font-weight: bold; font-size: 3.5em; margin-left: auto; margin-right: auto;">Pepper Shoe</span>
+            <span style="font-weight: bold; font-size: 3.5em; margin-left: auto; margin-right: auto;">Pepper <br> Shoe</span>
             <div style="width: 100%; text-align: center; margin-top: 30px;">
               <button id="explore" class="btn btn-lg btn-outline-dark" style="width: 200px;" onclick="route('./allProduct.html');">瀏覽線上目錄</button>
             </div>
@@ -87,11 +88,28 @@
   </div>
 
 ​<script>
+  var pCategory = localStorage.getItem('productCategory');
+  var pName = localStorage.getItem('productName');
+  var selection = '';
+  if(pCategory == 'run'){
+    var cate = '慢跑';
+  }else if(pCategory == 'hiking'){
+    var cate = '登山健行';
+  }else{
+    var cate = '籃球';
+  }
+
+  if (pName != null && pCategory != null){
+    selection = '而您目前選擇的是'+cate+'鞋 ['+pName+']'
+  }else{
+    selection = '而您目前尚未選擇商品'
+  }
+
   var persona = localStorage.getItem('persona');
   if(persona == 0){
-    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子，'+selection+'</p>');
   }else{
-    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子，'+selection+'</p>');
   }
   
   function isSelect(){

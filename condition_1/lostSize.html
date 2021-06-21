@@ -11,13 +11,13 @@
   <script src="../main.js"></script>
   <link rel="stylesheet" href="../main.css">
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXGJ28TE8T"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS79Y419WQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-RXGJ28TE8T');
+    gtag('config', 'G-SS79Y419WQ');
   </script>
   <style>
     .nosize{
@@ -50,6 +50,7 @@
   <div class="row" style="margin-top: 1%;">
     <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
+  <div style="color: #FAB00C; margin-left: 2%;">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-md-3" id="lostVideo" style="z-index: 999;"></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
@@ -261,14 +262,13 @@
   }
 
   function recommend(){
-    document.getElementById('showModal').click();
     var popLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_pop.mp4';
     if(productCategory+productId == 'basketball3'){
     $("#lostVideo").html('<video width="100%" controls autoplay transform: rotate(90deg);><source src="'+popLink+'" type="video/mp4" id=""></video>');
     }else{
       $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+popLink+'" type="video/mp4" id=""></video>');
     }
-    // $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+popLink+'" type="video/mp4" id=""></video>');
+    document.getElementById('showModal').click();
   }
 
   setTimeout('showSize();', 4000);
@@ -278,11 +278,28 @@
   var lostLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_other.mp4';
   $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
 
+  var pCategory = localStorage.getItem('productCategory');
+  var pName = localStorage.getItem('productName');
+  var selection = '';
+  if(pCategory == 'run'){
+    var cate = '慢跑';
+  }else if(pCategory == 'hiking'){
+    var cate = '登山健行';
+  }else{
+    var cate = '籃球';
+  }
+
+  if (pName != null && pCategory != null){
+    selection = '而您目前選擇的是'+cate+'鞋 ['+pName+']'
+  }else{
+    selection = '而您目前尚未選擇商品'
+  }
+
   var persona = localStorage.getItem('persona');
   if(persona == 0){
-    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子</p>');
+    $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子，'+selection+'</p>');
   }else{
-    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子</p>');
+    $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子，'+selection+'</p>');
   }
 </script>
 </body>

@@ -5,7 +5,11 @@ function route(path){
 function getProduct(productCategory, id, source){
     localStorage.setItem('viewProductCate', productCategory);
     localStorage.setItem('viewProductId', id);
-    localStorage.setItem('source', source);
+    if(source != 'recommend'){
+      localStorage.setItem('viewSource', source);
+    }else{
+      localStorage.setItem('source', source);
+    }
     window.location.href = 'productIntro.html?productCategory='+ productCategory +'&id='+ id;
   }
 
