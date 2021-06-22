@@ -45,6 +45,9 @@
       width:20px;
       height:20px;
     }
+    h4{
+      margin-top: 40px;
+    }
   </style>
 </head>
 <!-- class="needs-validation" novalidate -->
@@ -54,7 +57,9 @@
         <div id="demo">
           <h4 style="background-color: #FAB00C; color: white">個人資訊</h4>
           <b style="color:red">** 所有問題皆為必填選項</b><br>
-          <div style="margin-top: 40px;">1 請問您的性別是？</div>
+          <h4>一、基本資訊</h4>
+          <hr>
+          <div>1 請問您的性別是？</div>
           <div class="form-group" id="gender">
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="gender" id="male" value="M" required>
@@ -111,6 +116,8 @@
               <label class="form-check-label" for="master"> 碩士（含）以上</label>
             </div>
           </div>
+          <h4>二、購物經驗</h4>
+          <hr>
           <div>4 請問您一般選購物品時的習慣主要為何？</div>
           <div class="form-group" id="habit">
             <div class="form-group">
@@ -129,19 +136,19 @@
             <div class="form-group customalign">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F1" value="5" required>
-                <label class="form-check-label" for="ecomm_F1"> 每一個月使用超過一次</label>
+                <label class="form-check-label" for="ecomm_F1"> 每一個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F2" value="4">
-                <label class="form-check-label" for="ecomm_F2"> 每三個月使用超過一次</label>
+                <label class="form-check-label" for="ecomm_F2"> 每三個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F3" value="3">
-                <label class="form-check-label" for="ecomm_F3"> 每半年使用超過一次</label>
+                <label class="form-check-label" for="ecomm_F3"> 每半年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F4" value="2">
-                <label class="form-check-label" for="ecomm_F4"> 每一年使用超過一次</label>
+                <label class="form-check-label" for="ecomm_F4"> 每一年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F5" value="1">
@@ -154,19 +161,19 @@
             <div class="form-group customalign">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="shoe_F" id="shoe_F1" value="5" required>
-                <label class="form-check-label" for="shoe_F1"> 每一個月使用超過一次</label>
+                <label class="form-check-label" for="shoe_F1"> 每一個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="shoe_F" id="shoe_F2" value="4">
-                <label class="form-check-label" for="shoe_F2"> 每三個月使用超過一次</label>
+                <label class="form-check-label" for="shoe_F2"> 每三個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="shoe_F" id="shoe_F3" value="3">
-                <label class="form-check-label" for="shoe_F3"> 每半年使用超過一次</label>
+                <label class="form-check-label" for="shoe_F3"> 每半年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="shoe_F" id="shoe_F4" value="2">
-                <label class="form-check-label" for="shoe_F4"> 每一年使用超過一次</label>
+                <label class="form-check-label" for="shoe_F4"> 每一年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="shoe_F" id="shoe_F5" value="1">
@@ -201,7 +208,8 @@
               <label class="itemlabel">非常願意</label>
             </div>
           </div>
-          <div style="margin-top: 30px; margin-bottom: 10px; color: rgb(123, 123, 123);">
+          <h4>三、人形機器人使用經驗</h4>
+          <div style="margin-bottom: 10px; color: rgb(123, 123, 123);">
             <u>*備註：人形機器人擁有頭部、軀幹、雙手與腿部，呈現出與人類相似的外觀與行為</u>
             <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#example" id="" style="margin-left: 20px;">範例</button>
             <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -220,6 +228,7 @@
               </div>
             </div>
           </div>
+          <hr>
           <div>8 請問您對於使用人形機器人的熟悉程度為何？</div>
           <div class="form-group" id="r_F">
             <div class="form-group customalign">
@@ -252,19 +261,19 @@
             <div class="form-group customalign">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frequency" id="frequency1" value="5" required>
-                <label class="form-check-label" for="frequency1"> 每一個月使用超過一次</label>
+                <label class="form-check-label" for="frequency1"> 每一個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frequency" id="frequency2" value="4">
-                <label class="form-check-label" for="frequency2"> 每三個月使用超過一次</label>
+                <label class="form-check-label" for="frequency2"> 每三個月使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frequency" id="frequency3" value="3">
-                <label class="form-check-label" for="frequency3"> 每半年使用超過一次</label>
+                <label class="form-check-label" for="frequency3"> 每半年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frequency" id="frequency4" value="2">
-                <label class="form-check-label" for="frequency4"> 每一年使用超過一次</label>
+                <label class="form-check-label" for="frequency4"> 每一年使用至少一次</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frequency" id="frequency5" value="1">

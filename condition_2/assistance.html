@@ -41,7 +41,7 @@
   <div class="row" style="margin-top: 1%;">
     <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
-  <div style="color: #FAB00C; margin-left: 2%;">***請觀看完整段影片，再進行下一步***</div>
+  <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-sm-3">
       <video width="100%" controls autoplay>
@@ -196,9 +196,9 @@
 
     var persona = localStorage.getItem('persona');
     if(persona == 0){
-      $('#taskInfo').append('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子，'+selection+'</p>');
+      $('#taskInfo').append('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>'+selection+'</b></p>');
     }else{
-      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子，'+selection+'</p>');
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>'+selection+'</b></p>');
     }
 	</script>
 </body>

@@ -46,7 +46,7 @@
   <div class="row" style="margin-top: 1%;">
     <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
-  <div style="color: #FAB00C; margin-left: 2%;">***請觀看完整段影片，再進行下一步***</div>
+  <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-md-3" id=introVideo></div>
     <div class="col-md-9" style="overflow: scroll; border: 1px solid lightgrey;">
@@ -120,20 +120,12 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5>模擬情況敘述</h5>
+                模擬情況敘述
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="row">
-                    <p>
-                      前往尋找商品後，卻發現貨架上沒有想要的尺寸。
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <div class="modal-body" id="simulation"></div>
               <div class="modal-footer">
                 <button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="javascript:location.href='funcSelect.html'">繼續</button>
               </div>
@@ -223,9 +215,12 @@
       localStorage.setItem('productImg', imgLink);
       taskinfo();
       if(getLost != 1){
+        $('#simulation').html('<h5>前往商品的所在位置後，卻發現貨架上沒有想要的尺寸。</h5>');
         setTimeout("document.getElementById('showLost').click()", 4500);
       }else{
-        setTimeout("window.location.href = 'funcSelect.html'", 5000);
+        $('#simulation').html('<h5>前往商品的所在位置後，並選擇這雙鞋子做為想要購買的商品。</h5>');
+        setTimeout("document.getElementById('showLost').click()", 4500);
+        //setTimeout("window.location.href = 'funcSelect.html'", 5000);
       }
     }
   }
@@ -259,9 +254,9 @@
 
     var persona = localStorage.getItem('persona');
     if(persona == 0){
-      $('#taskInfo').html('<p>任務說明：為喜歡大自然的 Anna 挑選一款鞋子，'+selection+'</p>');
+      $('#taskInfo').html('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>'+selection+'</b></p>');
     }else{
-      $('#taskInfo').html('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選一款鞋子，'+selection+'</p>');
+      $('#taskInfo').html('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>'+selection+'</b></p>');
     }
   }
 
