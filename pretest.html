@@ -35,13 +35,16 @@
       justify-content: space-between; 
     }
     .form-group{
-      margin-top: 10px;
-      margin-bottom: 20px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    .form-check-inline{
+      margin-top: 5px;;
     }
     .itemlabel{
       color: rgb(99, 99, 99);
     }
-    input[type='radio'] {
+    input[type='radio'], input[type='checkbox'] {
       width:20px;
       height:20px;
     }
@@ -118,49 +121,25 @@
           </div>
           <h4>二、購物經驗</h4>
           <hr>
-          <div>4 請問您一般選購物品時的習慣主要為何？</div>
+          <div>4 請問您一般選購物品時的習慣主要為何？（可複選）   
+          </div>
           <div class="form-group" id="habit">
             <div class="form-group">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="habit" id="alone" value="1" required>
+                <input class="form-check-input" type="checkbox" name="habit" id="alone" value="1" required>
                 <label class="form-check-label" for="alone"> 自己一個人看看</label>
               </div>
               <div class="form-check form-check-inline" style="margin-left: 5%;">
-                <input class="form-check-input" type="radio" name="habit" id="sales" value="2">
+                <input class="form-check-input" type="checkbox" name="habit" id="sales" value="2">
                 <label class="form-check-label" for="sales"> 找朋友一起討論</label>
               </div>
               <div class="form-check form-check-inline" style="margin-left: 5%;">
-                <input class="form-check-input" type="radio" name="habit" id="sales" value="3">
+                <input class="form-check-input" type="checkbox" name="habit" id="sales" value="3">
                 <label class="form-check-label" for="sales"> 向店員詢問與獲取意見</label>
               </div>
             </div>
           </div>
-          <div>5 請問您進行線上購物的頻率為何？</div>
-          <div class="form-group" id="ecomm_F">
-            <div class="form-group customalign">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F1" value="5" required>
-                <label class="form-check-label" for="ecomm_F1"> 每一個月使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F2" value="4">
-                <label class="form-check-label" for="ecomm_F2"> 每三個月使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F3" value="3">
-                <label class="form-check-label" for="ecomm_F3"> 每半年使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F4" value="2">
-                <label class="form-check-label" for="ecomm_F4"> 每一年使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="ecomm_F" id="ecomm_F5" value="1">
-                <label class="form-check-label" for="ecomm_F5"> 從未使用過</label>
-              </div>
-            </div>
-          </div>
-          <div>6 請問您在網路上購買鞋子的頻率為何？</div>
+          <div>5 請問您在網路上購買鞋子的頻率為何？</div>
           <div class="form-group" id="shoe_F">
             <div class="form-group customalign">
               <div class="form-check form-check-inline">
@@ -185,19 +164,34 @@
               </div>
             </div>
           </div>
-          <div>7 請問您是否曾在網路上購買鞋子？</div>
-          <div class="form-group" id="buyShoe">
-            <div class="form-group">
+          <div>6 請問您是否會選擇電商網站向您推薦的商品？</div>
+          <div class="form-group" id="acceptance">
+            <div class="form-group customalign">
+              <label class="itemlabel">非常不願意</label>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="buyShoe" id="buyShoeYes" value="1" required>
-                <label class="form-check-label" for="buyShoeYes"> 是</label>
+                <input class="form-check-input" type="radio" name="acceptance" id="acceptance1" value="1" required>
+                <label class="form-check-label" for="acceptance1"> 1</label>
               </div>
-              <div class="form-check form-check-inline" style="margin-left: 5%;">
-                <input class="form-check-input" type="radio" name="buyShoe" id="buyShoeNo" value="0">
-                <label class="form-check-label" for="buyShoeNo"> 否</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="acceptance" id="acceptance2" value="2">
+                <label class="form-check-label" for="acceptance2"> 2</label>
               </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="acceptance" id="acceptance3" value="3">
+                <label class="form-check-label" for="acceptance3"> 3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="acceptance" id="acceptance4" value="4">
+                <label class="form-check-label" for="acceptance4"> 4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="acceptance" id="acceptance5" value="5">
+                <label class="form-check-label" for="acceptance5"> 5</label>
+              </div>
+              <label class="itemlabel">非常願意</label>
             </div>
           </div>
+          
           <h4>三、人形機器人使用經驗</h4>
           <div style="margin-bottom: 10px; color: rgb(123, 123, 123);">
             <u>*備註：人形機器人擁有頭部、軀幹、雙手與腿部，呈現出與人類相似的外觀與行為</u>
@@ -219,59 +213,7 @@
             </div>
           </div>
           <hr>
-          <div>8 請問您對於使用人形機器人的熟悉程度為何？</div>
-          <div class="form-group" id="r_F">
-            <div class="form-group customalign">
-              <label class="itemlabel">完全不熟悉</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="r_F" id="r_F1" value="1" required>
-                <label class="form-check-label" for="r_F1"> 1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="r_F" id="r_F2" value="2">
-                <label class="form-check-label" for="r_F2"> 2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="r_F" id="r_F3" value="3">
-                <label class="form-check-label" for="r_F3"> 3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="r_F" id="r_F4" value="4">
-                <label class="form-check-label" for="r_F4"> 4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="r_F" id="r_F5" value="5">
-                <label class="form-check-label" for="r_F5"> 5</label>
-              </div>
-              <label class="itemlabel">非常熟悉</label>
-            </div>
-          </div>
-          <div>9 請問您使用人形機器人的頻率為何？</div>
-          <div class="form-group" id="frequency">
-            <div class="form-group customalign">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="frequency" id="frequency1" value="5" required>
-                <label class="form-check-label" for="frequency1"> 每一個月使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="frequency" id="frequency2" value="4">
-                <label class="form-check-label" for="frequency2"> 每三個月使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="frequency" id="frequency3" value="3">
-                <label class="form-check-label" for="frequency3"> 每半年使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="frequency" id="frequency4" value="2">
-                <label class="form-check-label" for="frequency4"> 每一年使用至少一次</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="frequency" id="frequency5" value="1">
-                <label class="form-check-label" for="frequency5"> 從未使用過</label>
-              </div>
-            </div>
-          </div>
-          <div>10 請問您是否在實際場域中看過人形機器人？</div>
+          <div>7 請問您是否在實際場域中看過人形機器人？</div>
           <div class="form-group" id="seen">
             <div class="form-group">
               <div class="form-check form-check-inline">
@@ -284,7 +226,21 @@
               </div>
             </div>
           </div>
-          <div>11 請問您 看過/認為/想象中 人形機器人在公共場所或商店中扮演什麼樣的角色與功能？</div>
+          <div>8 請問您是否曾經使用過人形機器人？</div>
+          <div class="form-group" id="seen">
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="seen" id="seenYes" value="1" required>
+                <label class="form-check-label" for="seenYes"> 是</label>
+              </div>
+              <div class="form-check form-check-inline" style="margin-left: 5%;">
+                <input class="form-check-input" type="radio" name="seen" id="seenNo" value="0">
+                <label class="form-check-label" for="seenNo"> 否</label>
+              </div>
+            </div>
+          </div>
+          
+          <div>9 請問您 看過/認為/想象中 人形機器人在公共場所或商店中扮演什麼樣的角色與功能？</div>
           <div class="form-group">
             <div class="form-group">
               <input type="text" class="form-control" id="role" name="role" placeholder="您的回答">
@@ -330,17 +286,27 @@
     console.log(formData);
     // var demoData = {};
     var dataList = [];
+    var habitValue = '';
 
     for (i = 0; i < formData.length; i++){
       keyname = formData[i]["name"];
       value = formData[i]["value"];
       // demoData[keyname] = value;
-      dataList.push(keyname);
-      dataList.push(value);
+      if(keyname == 'habit'){
+        habitValue = habitValue + value + '+';
+        if (formData[i+1]["name"] != 'habit'){
+          dataList.push('habit');
+          dataList.push(habitValue);
+        }
+      }else{
+        dataList.push(keyname);
+        dataList.push(value);
+      }
+      
     }
     // console.log(demoData);
     // dataList.push(demoData);
-    // console.log(dataList);
+    console.log(dataList);
     localStorage.setItem('dataList', dataList);
     // window.location.href = "instruction.html";
   });

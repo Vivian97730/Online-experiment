@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pepper Shoe - 商品推薦</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../main.js"></script>
+  <link rel="stylesheet" href="../main.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS79Y419WQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SS79Y419WQ');
+  </script>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="row" style="margin-top: 1%;">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
+  </div>
+  <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
+  <div class="row">
+    <div class="col-sm-3" id="addProduct"></div>
+    <div class="col-sm-9" style="overflow: scroll; border: 1px solid lightgrey;" id="mainPage">
+      <div class="row">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
+          <a href="index.html">Pepper Shoe</a>
+        </div>
+        <div class = "col-sm-6" style = "padding-top: 10px;">
+          <ul class = "head-list" id="head">
+            <li>
+              <a href="funcSelect.html">
+                <img src="../img/menu.png" alt="" width="20px">
+                <span style="margin-left: 10px;">功能選單</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
+        <ul class = "nav nav-pills nav-fill">
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
+              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
+              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
+            </div>
+          </li>
+          <li class = "nav-item" >
+            <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
+          </li>
+          <li class = "nav-item">
+            <a class="nav-link" href="./allProduct.html">全部商品</a>
+          </li>
+        </ul>
+      </div>
+      <a href="javascript:history.back()">
+        <div style="margin-top: 10px; font-size: 20px;">
+          < 回上頁
+        </div>
+      </a>
+      <h4 style="margin-top: 20px; color:darkgrey">您可能會喜歡...</h4>
+      <div class="row productCard"></div>
+
+    </div>
+  </div>
+    
+  ​<script>
+    var productCategory = localStorage.getItem('productCategory');
+    var productId = localStorage.getItem('productId');
+    var recommendList = localStorage.getItem('recommendList');
+    localStorage.setItem('inRecommend', 1);
+
+  $(function() {        
+    $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
+      console.log(data);
+      var r = data.feed.entry;
+      var ritems = [];
+
+      for(var i in r) {
+        var ritem = {};
+        if(r[i].gsx$category.$t == productCategory){
+          if(recommendList.indexOf(r[i].gsx$id.$t) != -1){
+            if(r[i].gsx$id.$t == productId){
+              continue
+            }else{
+              ritem.category = r[i].gsx$category.$t;
+              ritem.id = r[i].gsx$id.$t;
+              ritem.gender = r[i].gsx$gender.$t;
+              ritem.name = r[i].gsx$name.$t;
+              ritem.imglink = r[i].gsx$imglink.$t;
+              ritem.price = r[i].gsx$price.$t;
+
+              ritems.push(ritem);
+            }
+          }
+        }
+      }
+      console.log(ritems);
+      for(var i in ritems) {
+        // var pname = ritems[i].name.split(' ')[0];
+        var Card = '<div class="card" onclick="getProduct(\''+ritems[i].category+'\',\''+ritems[i].id+'\',\'recommend\')"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+ritems[i].name+'</h5><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
+        $('.productCard').append(Card);
+      }
+    });
+  });
+
+    var persona = localStorage.getItem('persona');
+    if(persona == 0){
+      $('#taskInfo').append('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>而您目前尚未選擇商品</b></p>');
+    }else{
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>而您目前尚未選擇商品</b></p>');
+    }
+	</script>
+</body>
+</html>
+​

@@ -45,18 +45,12 @@
                 <span style="margin-left: 10px;">功能選單</span>
               </a>
             </li>
-            <li id="iflogin" style="display: none;">
-              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
-            </li>
-            <li id="nologin" style="display: none;">
-              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
-            </li>
           </ul>
         </div>
       </div>
 
 
-      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
         <ul class = "nav nav-pills nav-fill">
           <li class = "nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
@@ -117,18 +111,13 @@
           var item = {};
           item.category = d[i].gsx$category.$t;
           item.id = d[i].gsx$id.$t;
-          item.gender = d[i].gsx$gender.$t;
           item.name = d[i].gsx$name.$t;
           item.price = d[i].gsx$price.$t;
           item.imglink = d[i].gsx$imglink.$t;
           items.push(item);
         }
         for(var i in items) {
-          if(items[i].gender.length > 2){
-            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【男/女】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
-          }else{
-            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【'+items[i].gender[0]+'】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
-          }
+          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'recommend\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><span class="card-text"> NT '+items[i].price+'</span></div></div>';
           
           if(items[i].category == "run"){
             $('#run').append(Card);

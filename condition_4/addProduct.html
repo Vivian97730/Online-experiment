@@ -28,30 +28,23 @@
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
     <div class="col-sm-3" id="addProduct"></div>
-    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;">
+    <div class="col-sm-9" style="overflow: scroll; border: 1px solid lightgrey;">
       <div class="row">
-        <div class = "col-sm-6" style = "font-size: 2em; padding: 0px 20px;">
+        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
           <a href="index.html">Pepper Shoe</a>
         </div>
         <div class = "col-sm-6" style = "padding-top: 10px;">
           <ul class = "head-list" id="head">
             <li>
               <a href="funcSelect.html">
-                <img src="../img/menu.png" alt="" width="25px">
+                <img src="../img/menu.png" alt="" width="20px">
                 <span style="margin-left: 10px;">功能選單</span>
               </a>
             </li>
-            <!-- <li id="iflogin" style="display: none;">
-              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
-            </li>
-            <li id="nologin" style="display: none;">
-              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
-            </li> -->
           </ul>
         </div>
       </div>
-
-      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
         <ul class = "nav nav-pills nav-fill">
           <li class = "nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
@@ -70,20 +63,32 @@
         </ul>
       </div>
 
-      <div class="">
+      <div style="width: 95%; margin: 0 auto;">
         <a href="javascript:history.back()">
-          <div style="margin-top: 20px; font-size: 20px;">
+          <div style="margin-top: 10px; font-size: 20px;">
             < 回上頁
           </div>
         </a>
-        <h3 style="margin-top: 20px; color:darkgrey">推薦加購商品</h3>
+        <div class="row" style="margin-top: 1%; border: 1px solid lightgray; border-radius: 5px; padding: 10px;">
+          <div class="col-sm-3">
+            <h5 style="margin-top: 20px; color:darkgrey">您所選購的商品</h5>
+          </div>
+          <div class="col-sm-3">
+            <img src="" alt="..." width="50%" style="display: block; margin-left: auto; margin-right: auto;" id="productImg">
+          </div>
+          <div class="col-sm-6">
+            <h5 id="productName"></h5>
+            <p id="productPrice"></p>
+          </div>
+        </div>
+        <h4 style="margin-top: 20px; color:darkgrey">搭配推薦</h4>
         <div class="row" style="margin-top: 3%;">
           <div class="col-sm-6">
-            <img src="" alt="..." width="240px" style="display: block; margin-left: auto; margin-right: auto;" id="productImg">
+            <img src="" alt="..." width="50%" style="display: block; margin-left: auto; margin-right: auto;" id="addImg">
           </div>
           <div class="col-sm-6" style="padding-left: 20px; word-break:break-all">
-            <h4 id="addName"></h4><br>
-            <h5 id="addTag"></h5>
+            <h5 id="addName"></h5><br>
+            <p id="addTag"></p>
             <p style="font-size: 20px;" id="addPrice">價錢：</p>
             <div class="row" style="margin-top: 50px; display: flex; justify-content: space-between;">
               <button type="button" class="btn btn-lg btn-outline-dark" style="width: 45%;" onclick="checkout(0)">跳過，直接結帳</button>
@@ -97,36 +102,43 @@
     
   ​<script>
     var productCategory = localStorage.getItem('productCategory');
-    var productImg = '';
-    var productName = '';
+    var productImg = localStorage.getItem('productImg');
+    var productName = localStorage.getItem('productName');
+    var productPrice = localStorage.getItem('productPrice');
+    var addImg = '';
+    var addName = '';
     var hashtag = '';
-    var price = '';
+    var addPrice = '';
     var addLink = '';
+
+    $("#productImg").attr("src", productImg);
+    $('#productName').text(productName);
+    $("#productPrice").append('<span style="color: #FAB00C; font-weight: bold; ">NT$ '+ productPrice +'</span>');
 
     $(function() {        
       if(productCategory == 'run'){
-        productImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/9df78eab33525d08d6e5fb8d27136e95/b/d/bd39f9cc-ecbe-4640-be50-f165c1d52b11_8547746.jpg';
-        productName = '跑步水壺腰帶 KALENJI';
+        addImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/9df78eab33525d08d6e5fb8d27136e95/b/d/bd39f9cc-ecbe-4640-be50-f165c1d52b11_8547746.jpg';
+        addName = '跑步水壺腰帶 KALENJI';
         hashtag = '500ml 水瓶容量 / 輕盈性 / 合身穩定';
-        price = '299';
+        addPrice = '299';
         addLink = '../video/intimate/run_addProduct_AI.mp4';
       }else if(productCategory == 'hiking'){
-        productImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/b/c/bcfc02e2-63ec-47a1-bf82-c80327737569_8526270.jpg';
-        productName = '高機能防曬防水透氣遮陽帽 FORCLAZ TREK 900';
+        addImg = 'https://media.decathlon.tw/media/catalog/product/cache/10/image/438x/9df78eab33525d08d6e5fb8d27136e95/b/c/bcfc02e2-63ec-47a1-bf82-c80327737569_8526270.jpg';
+        addName = '高機能防曬防水透氣遮陽帽 FORCLAZ TREK 900';
         hashtag = '遮陽大帽檐 / 防紫外線 / 面料透氣 / 防水面料';
-        price = '599';
+        addPrice = '599';
         addLink = '../video/intimate/hiking_addProduct_AI.mp4';
       }else{
-        productImg = 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b12723dc-4b2c-469c-9e35-c8603bb558c8/everyday-%E4%B8%AD%E7%AD%92%E7%B1%83%E7%90%83%E8%A5%AA-t6mW9X.png';
-        productName = 'Everyday 中筒籃球襪';
+        addImg = 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b12723dc-4b2c-469c-9e35-c8603bb558c8/everyday-%E4%B8%AD%E7%AD%92%E7%B1%83%E7%90%83%E8%A5%AA-t6mW9X.png';
+        addName = 'Everyday 中筒籃球襪';
         hashtag = '足底緩震 / 足弓支撐感 / 透氣乾爽 / 包覆腳踝和小腿下半部';
-        price = '550';
+        addPrice = '550';
         addLink = '../video/intimate/basketball_addProduct_AI.mp4';
       }
-      $("#productImg").attr("src", productImg);
-      $('#addName').text(productName);
+      $("#addImg").attr("src", addImg);
+      $('#addName').text(addName);
       $('#addTag').text(hashtag);
-      $('#addPrice').append('<span style="font-size: 40px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+ price +'</span>');
+      $('#addPrice').append('<span style="font-size: 30px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+ addPrice +'</span>');
       $('#addProduct').append('<video width="100%" controls autoplay><source src="'+addLink+'" type="video/mp4"></video>');
     });
 

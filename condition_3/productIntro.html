@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Pepper Shoe - 查看商品</title>
+  <title>Pepper Shoe - 查看商品 3</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div style = "background-color: rgb(50, 49, 49); margin-top: 1%;">
+      <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
         <ul class = "nav nav-pills nav-fill">
           <li class = "nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
@@ -99,11 +99,10 @@
           </div>
           <div class="col-sm-6" style="padding-left: 20px; word-break:break-all">
             <h3 id="name"></h3><br>
-            <p style="font-size: 15px;" id="gender"></p>
-            <p style="font-size: 15px;" id="size"></p>
+            <p style="font-size: 15px;" id="size"></p><br>
             <p id="hashtag"></p><br>
-            <a data-toggle="collapse" href="#intro" role="button" aria-expanded="false" aria-controls="intro" id="more" onclick="func('showIntro');">
-              <u>ˇ 更多特點說明</u>
+            <a data-toggle="collapse" href="#intro" role="button" aria-expanded="false" aria-controls="intro" id="more" onclick="func('showIntro');" style="margin-right: 5%;">
+              <u>ˇ 商品介紹</u>
             </a>
             <p id="intro" style="font-size: 15px; border: 1px solid lightgray; border-radius: 5px; padding: 12px;"></p>
             <p style="font-size: 16px;" id="price"></p>
@@ -120,10 +119,11 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body" id="simulation"></div>
-              <div class="modal-footer">
-                <button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="javascript:location.href='funcSelect.html'">繼續</button>
+              <div class="modal-body" style="font-size: 18px;">
+                <b><p id="simulation"></p></b>
+                <p id="nextStep"></p>
               </div>
+              <div class="modal-footer" id="goButton"></div>
             </div>
           </div>
         </div>
@@ -158,7 +158,6 @@
         if(d[i].gsx$category.$t == productCategory && d[i].gsx$id.$t == productId){
           item.category = d[i].gsx$category.$t;
           item.id = d[i].gsx$id.$t;
-          item.gender = d[i].gsx$gender.$t;
           item.name = d[i].gsx$name.$t;
           item.price = d[i].gsx$price.$t;
           item.imglink = d[i].gsx$imglink.$t;
@@ -182,7 +181,6 @@
         $('#productimg').append('<img src="'+ item.imglink +'" style="display: block; margin: auto;">');
       }
       $('#name').text(item.name);
-      $('#gender').text('性別：'+ item.gender);
       $('#size').text('尺碼：'+ sizeList[0] + ' - ' + sizeList[sizeList.length-1] + ' cm');
       for(var i in hashtagList){
         $('#hashtag').append('<span class="tag">'+hashtagList[i]+'</span>');
@@ -210,14 +208,24 @@
       localStorage.setItem('productImg', imgLink);
       taskinfo();
       if(getLost != 1){
-        $('#simulation').html('<h5>前往商品的所在位置後，卻發現貨架上沒有想要的尺寸。</h5>');
+        $('#simulation').html('前往商品的所在位置後，卻發現貨架上沒有想要的尺寸。');
+        $('#nextStep').html('是否向機器人詢問商品存貨狀況？');
+        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="lostSize()">問題協助</button>');
         setTimeout("document.getElementById('showLost').click()", 4500);
       }else{
         $('#simulation').html('<h5>前往商品的所在位置後，並選擇這雙鞋子做為想要購買的商品。</h5>');
+        $('#nextStep').html('是否前往結帳？');
+        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="javascript:location.href=checkout.html">前往結帳</button>')
         setTimeout("document.getElementById('showLost').click()", 4500);
         //setTimeout("window.location.href = 'funcSelect.html'", 5000);
       }
     }
+  }
+
+  function lostSize(){
+    localStorage.setItem('findCategory', productCategory);
+    localStorage.setItem('findpid', productId);
+    window.location.href = 'lostSize.html';
   }
 
   var introLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_full.mp4';
@@ -249,7 +257,7 @@
     if(persona == 0){
       $('#taskInfo').html('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>'+selection+'</b></p>');
     }else{
-      $('#taskInfo').html('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>'+selection+'</b></p>');
+      $('#taskInfo').html('<p>任務說明：為喜歡在籃球場馳騁的 Andy 挑選禮物，<b>'+selection+'</b></p>');
     }
   }
 
