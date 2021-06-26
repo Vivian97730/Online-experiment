@@ -123,7 +123,7 @@
           items.push(item);
         }
         for(var i in items) {
-          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【'+items[i].gender[0]+'】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
+          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
           
           if(items[i].category == "run"){
             $('#run').append(Card);
