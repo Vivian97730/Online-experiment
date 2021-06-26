@@ -44,8 +44,9 @@
       margin-left: 20px;
     }
     .card{
-      width: 30%;
+      width: 32%;
       cursor: auto;
+      margin-right: 1%;
     }
 
   </style>
@@ -57,7 +58,7 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id="lostVideo" style="z-index: 999;"></div>
+    <div class="col-md-3" id="videoDisplay" style="z-index: 999;"></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -142,7 +143,7 @@
               <div class="modal-body" id="recommendProduct" style="text-align: center;"></div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" onclick="other()">看看其他商品</button>
-                <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="getRecommend()"> 看看推薦商品</button>
+                <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="recommend()"> 看看推薦商品</button>
               </div>
             </div>
           </div>
@@ -212,7 +213,11 @@
       
       for(var i in ritems) {
         if(ritems[i].category == productCategory){
-          var pname = ritems[i].name.split(' ')[0];
+          if(productCategory != 'basketball'){
+            var pname = ritems[i].name.split(' ')[0];
+          }else{
+            var pname = ritems[i].name;
+          }
           var Card = '<div class="card"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><p class="card-title">'+pname+'</p><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
           $('#recommendProduct').append(Card);
         }
@@ -222,21 +227,10 @@
   });
 
   function other(){
+    localStorage.setItem('viewOther', 1);
     window.location.href = "./category.html?category="+productCategory;
-    localStorage.setItem('getOther', 1);
   }
 
-  // var recommendCategory = localStorage.getItem('recommendCategory');
-  // var recommendId = localStorage.getItem('recommendId');
-
-  function getRecommend(){
-  //   // localStorage.setItem('productCategory', productCategory);
-  //   // localStorage.setItem('productId', localStorage.getItem('recommendId'));
-    window.location.href = "./recommend.html";
-  //   var recommendCategory = localStorage.getItem('recommendCategory');
-  //   var recommendId = localStorage.getItem('recommendId');
-  //   getProduct(recommendCategory, recommendId, 'recommend');
-  }
 
   function showSize(){
     setTimeout("document.getElementById('wait').style.display = 'none'", 3000);
@@ -246,9 +240,7 @@
   }
 
   function recommend(){
-    // var popLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_pop.mp4';
-    // $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+popLink+'" type="video/mp4" id=""></video>');
-    // document.getElementById('showModal').click();
+    localStorage.setItem('viewRecommend', 1);
     window.location.href = "./recommend.html";
   }
 
@@ -256,8 +248,8 @@
   // setTimeout("document.getElementById('submitInfo').style.display = 'none'", 5000);
   setTimeout("document.getElementById('lostContent').style.display = ''", 5000);
 
-  var lostLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_lostSize.mp4';
-  $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
+  var lostLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_lostSize_AI.mp4';
+  $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
 
   var pCategory = localStorage.getItem('productCategory');
   var pName = localStorage.getItem('productName');

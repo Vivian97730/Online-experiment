@@ -43,7 +43,7 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id=introVideo></div>
+    <div class="col-md-3" id=videoDisplay></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -168,7 +168,7 @@
         }
       }
       console.log(robotIntro);
-      localStorage.setItem('robotIntro', robotIntro);
+      // localStorage.setItem('robotIntro', robotIntro);
       productName = item.name;
       pPrice = item.price;
       imgLink = item.imglink;
@@ -196,11 +196,11 @@
     if(f == "showIntro"){
       document.getElementById("intro").style.display = 'block';
       var partLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_part.mp4';
-      $("#introVideo").html('<video width="100%" controls autoplay><source src="'+partLink+'" type="video/mp4" id="cateVideo"></video>');
+      $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+partLink+'" type="video/mp4" id="cateVideo"></video>');
     }
     else if(f == "findShoe"){
       var findLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_find.mp4';
-      $("#introVideo").html('<video width="100%" controls autoplay><source src="'+findLink+'" type="video/mp4" id="findVideo"></video>');
+      $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+findLink+'" type="video/mp4" id="findVideo"></video>');
       localStorage.setItem('productCategory', productCategory);
       localStorage.setItem('productId', productId);
       localStorage.setItem('productName', productName);
@@ -216,11 +216,15 @@
       }else{
         $('#simulation').html('<h5>前往商品的所在位置後，並選擇這雙鞋子做為想要購買的商品。</h5>');
         $('#nextStep').html('是否前往結帳？');
-        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="javascript:location.href=checkout.html">前往結帳</button>')
+        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="checkout()">前往結帳</button>')
         setTimeout("document.getElementById('showLost').click()", 4500);
         //setTimeout("window.location.href = 'funcSelect.html'", 5000);
       }
     }
+  }
+
+  function checkout(){
+    window.location.href = "./addProduct.html";
   }
 
   function lostSize(){
@@ -230,7 +234,7 @@
   }
 
   var introLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_full.mp4';
-  $("#introVideo").html('<video width="100%" id="productIntro" controls autoplay><source src="'+introLink+'" type="video/mp4"></video>');
+  $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+introLink+'" type="video/mp4"></video>');
 
   console.log(productCategory+productId);
 

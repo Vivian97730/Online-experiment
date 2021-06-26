@@ -27,8 +27,8 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-sm-3" id="addProduct"></div>
-    <div class="col-sm-9" style="overflow: scroll; border: 1px solid lightgrey;" id="mainPage">
+    <div class="col-sm-3" id="videoDisplay"></div>
+    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
           <a href="index.html">Pepper Shoe</a>
@@ -74,12 +74,12 @@
   </div>
     
   ​<script>
-    var categoryIntro = window.location.search.split('=')[1];
-    // var categoryIntro = localStorage.getItem('categoryIntro');
+    var categoryRecommend = window.location.search.split('=')[1];
     var recommendList = [];
-    console.log(categoryIntro);
-    $('html, body').animate({scrollTop: 1000}, 500);
+    console.log(categoryRecommend);
+    
     $(function() {
+      $('html, body').animate({scrollTop: 1000}, 500);
       $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
         console.log(data);
         var d = data.feed.entry;
@@ -92,28 +92,35 @@
           item.name = d[i].gsx$name.$t;
           item.price = d[i].gsx$price.$t;
           item.imglink = d[i].gsx$imglink.$t;
-          if(item.category == categoryIntro){
+          if(item.category == categoryRecommend){
             items.push(item);
           }
-          
         }
 
-        if(categoryIntro == 'run'){
-          recommendList = ['1', '3'];
-        }else{
-          recommendList = ['1', '2', '5'];
-        }
+        
+        recommendList = ['1', '3', '5'];
         localStorage.setItem('recommendList', recommendList)
 
         for(var i in items) {
           console.log(items[i].id);
           // console.log(recommendList.indexOf(items[i].id));
           if(recommendList.indexOf(items[i].id) != -1){
-            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'category\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><span class="card-text"> NT '+items[i].price+'</span></div></div>';
+            var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'preference\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><span class="card-text"> NT '+items[i].price+'</span></div></div>';
             $('.productCard').append(Card);      
           }
         }
       });
+
+      var videoLink = '';
+      if(categoryRecommend == 'run'){
+        videoLink = '../video/neutral/run_preference_AN.mp4';
+      }else if(categoryRecommend == 'hiking'){
+        videoLink = '../video/neutral/hiking_preference_AN.mp4';
+      }else{
+        videoLink = '../video/neutral/basketball_preference_AN.mp4';
+      }
+
+      $("#videoDisplay").append('<video width="100%" controls autoplay><source src="'+videoLink+'" type="video/mp4" id=""></video>');
     })
 
     var persona = localStorage.getItem('persona');
@@ -125,4 +132,3 @@
 	</script>
 </body>
 </html>
-​

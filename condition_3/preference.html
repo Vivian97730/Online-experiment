@@ -27,42 +27,12 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-sm-3" id="addProduct"></div>
-    <div class="col-sm-9" style="overflow: scroll; border: 1px solid lightgrey;">
-      <!-- <div class="row">
-        <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
-          <a href="index.html">Pepper Shoe</a>
-        </div>
-        <div class = "col-sm-6" style = "padding-top: 10px;">
-          <ul class = "head-list" id="head">
-            <li>
-              <a href="funcSelect.html">
-                <img src="../img/menu.png" alt="" width="20px">
-                <span style="margin-left: 10px;">功能選單</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> -->
-      <!-- <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
-        <ul class = "nav nav-pills nav-fill">
-          <li class = "nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
-              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
-              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
-            </div>
-          </li>
-          <li class = "nav-item" >
-            <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
-          </li>
-          <li class = "nav-item">
-            <a class="nav-link" href="./allProduct.html">全部商品</a>
-          </li>
-        </ul>
-      </div> -->
-      
+    <div class="col-sm-3" id="videoDisplay">
+      <video width="100%" controls autoplay>
+        <source src="../video/neutral/preference_AN.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;">      
       <div style="background-color:#F7F7F6; padding: 40px 30px;">
         <a href="hotProduct.html">
           <div style="margin-top: 20px; font-size: 20px;">
@@ -90,8 +60,6 @@
   </div>
     
   ​<script>
-  
-
     var persona = localStorage.getItem('persona');
     if(persona == 0){
       $('#taskInfo').append('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>而您目前尚未選擇商品</b></p>');

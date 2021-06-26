@@ -45,12 +45,6 @@
                 <span style="margin-left: 10px;">功能選單</span>
               </a>
             </li>
-            <li id="iflogin" style="display: none;">
-              <img src="../img/user.png" alt="" width="30px" style="margin-left: 40px"><span id="username" style="margin-left: 30px;"></span>
-            </li>
-            <li id="nologin" style="display: none;">
-              <button onclick="route('register.html')" class = "btn btn-outline-secondary" style="margin-left: 30px;" >會員註冊</button>
-            </li>
           </ul>
         </div>
       </div>
@@ -102,7 +96,7 @@
       </div>
     </div>
   </div>
-    
+  
   ​<script>
 
     $(function() {
@@ -122,7 +116,9 @@
           items.push(item);
         }
         for(var i in items) {
-          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
+
+          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'allProduct\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div>';
+
           
           if(items[i].category == "run"){
             $('#run').append(Card);

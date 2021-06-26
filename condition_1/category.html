@@ -33,7 +33,7 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id="cateVideo"></div>
+    <div class="col-md-3" id="videoDisplay"></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -115,7 +115,8 @@
         }
 
         for(var i in items) {
-          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'category\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">【'+items[i].gender[0]+'】'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div';
+          
+          var Card = '<div class="card" onclick="getProduct(\''+items[i].category+'\',\''+items[i].id+'\',\'category\')"><img src="'+items[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+items[i].name+'</h5><br><span class="card-text"> NT '+items[i].price+'</span></div></div>';
           
           $('.productCard').append(Card);          
         }
@@ -130,8 +131,10 @@
         cateLink = '../video/neutral/basketball_PN.mp4';
       }
 
-      $("#cateVideo").append('<video width="100%" controls autoplay><source src="'+cateLink+'" type="video/mp4" id=""></video>');
+      $("#videoDisplay").append('<video width="100%" controls autoplay><source src="'+cateLink+'" type="video/mp4" id=""></video>');
     });
+
+    // console.log('hihi');
 
     var pCategory = localStorage.getItem('productCategory');
     var pName = localStorage.getItem('productName');

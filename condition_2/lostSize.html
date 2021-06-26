@@ -38,11 +38,17 @@
       margin-right: 10px;
     }
     .price{
-      font-size: 20px; 
+      /* font-size: 16px;  */
       color: #FAB00C; 
       font-weight: bold; 
       margin-left: 20px;
     }
+    .card{
+      width: 32%;
+      cursor: auto;
+      margin-right: 1%;
+    }
+
   </style>
 </head>
 
@@ -52,7 +58,7 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id="lostVideo" style="z-index: 999;"></div>
+    <div class="col-md-3" id="videoDisplay" style="z-index: 999;"></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -101,10 +107,10 @@
             < 回上頁
           </div>
         </a>
-        <div style="margin-top: 5%; border: 1px solid lightgray; border-radius: 5px; padding: 1%; text-align: center;" id="submitInfo">
+        <!-- <div style="margin-top: 5%; border: 1px solid lightgray; border-radius: 5px; padding: 1%; text-align: center;" id="submitInfo">
           送出成功！
-        </div>
-        <div id="lostContent" style="display: none;">
+        </div> -->
+        <div id="lostContent">
           <div class="row" style="margin-top: 3%;" >
             <div class="col-sm-6" id="productimg"></div>
             <div class="col-sm-6" style="padding-left: 20px; word-break:break-all">
@@ -121,36 +127,6 @@
           <div class="row" style="margin-top: 50px;">
             <button type="button" class="btn btn-lg btn-outline-dark" style="width: 45%;" onclick="other();">看看其他商品</button>
             <button type="button" class="btn btn-lg" style="background-color: #FAB00C; color: white; width: 45%; margin-left: 10%;" onclick="recommend();">看看推薦商品</button>
-          </div>
-        </div>
-        
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#recommendmodal" id="showModal" hidden>Open Modal</button>
-        <div class="modal fade" id="recommendmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-5" id="recommendImg"></div>
-                    <div class="col-md-7">
-                      <h4 id="recommendName"></h4><br>
-                      <p id="recommendPrice">
-                        價錢：
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">關閉</button>
-                <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="getRecommend()">前往查看</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -195,66 +171,49 @@
         }
       }
 
+      var recommendList = localStorage.getItem('recommendList');
       var r = data.feed.entry;
-      var ritem = {};
-      if(productId != 3){
-        for(var i in d) {
-          if(r[i].gsx$category.$t == productCategory && r[i].gsx$id.$t == 3){
+      var ritems = [];
+
+      for(var i in d) {
+        var ritem = {};
+        if(recommendList.indexOf(r[i].gsx$id.$t) != -1){
+          if(r[i].gsx$id.$t == productId){
+            continue
+          }else{
             ritem.category = r[i].gsx$category.$t;
             ritem.id = r[i].gsx$id.$t;
             ritem.name = r[i].gsx$name.$t;
             ritem.imglink = r[i].gsx$imglink.$t;
             ritem.price = r[i].gsx$price.$t;
-            break;
-          }
-        }
-      }else{
-        for(var i in d) {
-          if(r[i].gsx$category.$t == productCategory && r[i].gsx$id.$t == 1){
-            ritem.category = r[i].gsx$category.$t;
-            ritem.id = r[i].gsx$id.$t;
-            ritem.name = r[i].gsx$name.$t;
-            ritem.imglink = r[i].gsx$imglink.$t;
-            ritem.price = r[i].gsx$price.$t;
-            break;
+
+            ritems.push(ritem);
           }
         }
       }
-      localStorage.setItem('recommendCategory', productCategory);
-      localStorage.setItem('recommendId', ritem.id);
-      $('#recommendImg').append('<img src="'+ritem.imglink+'" alt="..." style="display:block; margin: auto" width="150px">');
-      $('#recommendName').text(ritem.name);
-      $('#recommendPrice').append('<span class="price">NT$ '+ritem.price+'</span>');
-
+      
+      for(var i in ritems) {
+        if(ritems[i].category == productCategory){
+          if(productCategory != 'basketball'){
+            var pname = ritems[i].name.split(' ')[0];
+          }else{
+            var pname = ritems[i].name;
+          }
+          var Card = '<div class="card"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><p class="card-title">'+pname+'</p><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
+          $('#recommendProduct').append(Card);
+        }
+        
+      }
     });
   });
 
   function other(){
+    localStorage.setItem('viewOther', 1);
     window.location.href = "./category.html?category="+productCategory;
-    localStorage.setItem('getOther', 1);
   }
 
-  var recommendCategory = localStorage.getItem('recommendCategory');
-  var recommendId = localStorage.getItem('recommendId');
-
-  function getRecommend(){
-    // localStorage.setItem('productCategory', productCategory);
-    // localStorage.setItem('productId', localStorage.getItem('recommendId'));
-    // window.location.href = "./productIntro.html?category="+recommendCategory+"&id="+recommendId;
-    var recommendCategory = localStorage.getItem('recommendCategory');
-    var recommendId = localStorage.getItem('recommendId');
-    getProduct(recommendCategory, recommendId, 'recommend');
-  }
 
   function showSize(){
-    var cate;
-    if(recommendCategory == 'run'){
-      cate = '慢跑';
-    }else if(recommendCategory == 'hiking'){
-      cate = '登山';
-    }else{
-      cate = '籃球';
-    }
     setTimeout("document.getElementById('wait').style.display = 'none'", 3000);
     setTimeout("document.getElementById('sizetitle').style.display = 'block'", 3000);
     setTimeout("document.getElementById('sizeinfo').style.display = 'block'", 3000);
@@ -262,17 +221,16 @@
   }
 
   function recommend(){
-    var popLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_pop.mp4';
-    $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+popLink+'" type="video/mp4" id=""></video>');
-    document.getElementById('showModal').click();
+    localStorage.setItem('viewRecommend', 1);
+    window.location.href = "./recommend.html";
   }
 
-  setTimeout('showSize();', 4000);
-  setTimeout("document.getElementById('submitInfo').style.display = 'none'", 3000);
-  setTimeout("document.getElementById('lostContent').style.display = ''", 3000);
+  setTimeout('showSize();', 6000);
+  // setTimeout("document.getElementById('submitInfo').style.display = 'none'", 5000);
+  setTimeout("document.getElementById('lostContent').style.display = ''", 5000);
 
-  var lostLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_other.mp4';
-  $("#lostVideo").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
+  var lostLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_lostSize_PI.mp4';
+  $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+lostLink+'" type="video/mp4" id=""></video>');
 
   var pCategory = localStorage.getItem('productCategory');
   var pName = localStorage.getItem('productName');

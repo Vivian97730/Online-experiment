@@ -33,7 +33,7 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id="cateVideo"></div>
+    <div class="col-md-3" id="videoDisplay"></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -131,7 +131,7 @@
         cateLink = '../video/intimate/basketball_AI.mp4';
       }
 
-      $("#cateVideo").append('<video width="100%" controls autoplay><source src="'+cateLink+'" type="video/mp4" id=""></video>');
+      $("#videoDisplay").append('<video width="100%" controls autoplay><source src="'+cateLink+'" type="video/mp4" id=""></video>');
     });
 
     // console.log('hihi');

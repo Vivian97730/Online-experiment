@@ -30,8 +30,8 @@
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-sm-3" id="addProduct"></div>
-    <div class="col-sm-9" style="overflow: scroll; border: 1px solid lightgrey;" id="mainPage">
+    <div class="col-sm-3" id="videoDisplay"></div>
+    <div class="col-sm-9" style="overflow: auto; border: 1px solid lightgrey;" id="mainPage">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
           <a href="index.html">Pepper Shoe</a>
@@ -72,49 +72,65 @@
       </a>
       <h4 style="margin-top: 20px; color:darkgrey">您可能會喜歡...</h4>
       <div class="row productCard"></div>
-
     </div>
   </div>
     
   ​<script>
-    var productCategory = localStorage.getItem('productCategory');
-    var productId = localStorage.getItem('productId');
+    var productCategory = localStorage.getItem('findCategory');
+    var productId = localStorage.getItem('findpid');
     var recommendList = localStorage.getItem('recommendList');
-    localStorage.setItem('inRecommend', 1);
+    localStorage.setItem('viewRecommend', 1);
+    var recommendCheck = [];
 
-  $(function() {        
-    $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
-      console.log(data);
-      var r = data.feed.entry;
-      var ritems = [];
+    $(function() {        
+      $('html, body').animate({scrollTop: 1000}, 300);
+      $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
+        console.log(data);
+        var r = data.feed.entry;
+        var ritems = [];
 
-      for(var i in r) {
-        var ritem = {};
-        if(r[i].gsx$category.$t == productCategory){
-          if(recommendList.indexOf(r[i].gsx$id.$t) != -1){
-            if(r[i].gsx$id.$t == productId){
-              continue
-            }else{
-              ritem.category = r[i].gsx$category.$t;
-              ritem.id = r[i].gsx$id.$t;
-              ritem.gender = r[i].gsx$gender.$t;
-              ritem.name = r[i].gsx$name.$t;
-              ritem.imglink = r[i].gsx$imglink.$t;
-              ritem.price = r[i].gsx$price.$t;
-
-              ritems.push(ritem);
+        for(var i in r) {
+          var ritem = {};
+          if(r[i].gsx$category.$t == productCategory){
+            if(recommendList.indexOf(r[i].gsx$id.$t) != -1){
+              if(r[i].gsx$id.$t == productId){
+                continue
+              }else{
+                ritem.category = r[i].gsx$category.$t;
+                ritem.id = r[i].gsx$id.$t;
+                ritem.name = r[i].gsx$name.$t;
+                ritem.imglink = r[i].gsx$imglink.$t;
+                ritem.price = r[i].gsx$price.$t;
+                ritems.push(ritem);
+                recommendCheck.push(ritem.id);
+              }
             }
           }
         }
-      }
-      console.log(ritems);
-      for(var i in ritems) {
-        // var pname = ritems[i].name.split(' ')[0];
-        var Card = '<div class="card" onclick="getProduct(\''+ritems[i].category+'\',\''+ritems[i].id+'\',\'recommend\')"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+ritems[i].name+'</h5><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
-        $('.productCard').append(Card);
-      }
+
+        localStorage.setItem('recommendCheck', recommendCheck);
+        localStorage.setItem('recommendCategory', productCategory);
+        console.log(ritems);
+        for(var i in ritems) {
+          if(productCategory != 'basketball'){
+            var pname = ritems[i].name.split(' ')[0];
+          }else{
+            var pname = ritems[i].name;
+          }
+          
+          var Card = '<div class="card" onclick="getProduct(\''+ritems[i].category+'\',\''+ritems[i].id+'\',\'recommend\')"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><h5 class="card-title">'+ritems[i].name+'</h5><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
+          $('.productCard').append(Card);
+        }
+      });
     });
-  });
+
+    if(recommendList.indexOf(productId) != -1){
+      var videoLink = '../video/intimate/'+productCategory+productId+'_replace_PI.mp4';
+    }else{
+      var videoLink = '../video/intimate/'+productCategory+'_replace_PI.mp4';
+    }
+    
+    $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+videoLink+'" type="video/mp4"></video>');
 
     var persona = localStorage.getItem('persona');
     if(persona == 0){

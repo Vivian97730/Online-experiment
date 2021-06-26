@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pepper Shoe - 結帳</title>
+  <title>Pepper Shoe - 結帳</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -30,12 +29,12 @@
 </head>
 
 <body>
-​  <div class="row">
-      <div style="margin-left: 3%;" id="taskInfo"></div>
+  <div class="row">
+    <div style="margin-left: 3%;" id="taskInfo"></div>
   </div>
   <div class="videoRemind">***請觀看完整段影片，再進行下一步***</div>
   <div class="row">
-    <div class="col-md-3" id=checkoutVideo></div>
+    <div class="col-md-3" id=videoDisplay></div>
     <div class="col-md-9" style="overflow: auto; border: 1px solid lightgrey;">
       <div class="row">
         <div class = "col-sm-6" style = "font-size: 2em; padding: 0 20px;">
@@ -65,7 +64,7 @@
           </p>
         </div>
 
-        <a href="thank.html" type="button" class="btn" style="margin: 0 auto; margin-top: 20px; background-color:#FAB00C; width:66%; height: 50px;font-size: 20px; text-align: center; color: white;">確認結帳</a>
+        <a href="thank.html" type="button" class="btn" style="margin: 0 auto; margin-top: 20px; background-color:#FAB00C; width:66%; height: 50px;font-size: 24px; text-align: center; color: white;">確認結帳</a>
       </div>
     </div>
   </div>
@@ -74,7 +73,7 @@
   var productCategory = localStorage.getItem('productCategory');
   var productId = localStorage.getItem('productId');
   var recommendCategory = localStorage.getItem('recommendCategory');
-  var recommendId = localStorage.getItem('recommendId');
+  var recommendCheck = localStorage.getItem('recommendCheck');
   var productName = localStorage.getItem('productName');
   var productPrice = localStorage.getItem('productPrice');
   var productImg = localStorage.getItem('productImg');
@@ -83,10 +82,10 @@
   var addImg = '';
   var addPrice = '';
 
-  if(productCategory == recommendCategory && productId == recommendId){
-    localStorage.setItem('getRecommend', '1');
+  if(productCategory == recommendCategory && recommendCheck.indexOf(productId) != -1){
+    localStorage.setItem('buyRecommend', '1');
   }else{
-    localStorage.setItem('getOther', '1');
+    localStorage.setItem('buyOther', '1');
   }
 
   $('#test').append(addProduct);
@@ -118,8 +117,9 @@
   }
 
   var checkoutLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_checkout_'+addProduct+'.mp4';
-  $("#checkoutVideo").html('<video width="100%" controls autoplay><source src="'+checkoutLink+'" type="video/mp4" id=""></video>');
+  $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+checkoutLink+'" type="video/mp4" id=""></video>');
   
+
   var pCategory = localStorage.getItem('productCategory');
   var pName = localStorage.getItem('productName');
   var selection = '';

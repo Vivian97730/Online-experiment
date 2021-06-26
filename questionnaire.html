@@ -142,28 +142,11 @@
     }, false);
   })();
 
-  function demoShow(){
-    document.getElementById('postQ').style.display = 'none';
-    document.getElementById('demo').style.display = '';
-    document.getElementById('previous').style.display = '';
-    document.getElementById('next').style.display = 'none';
-    document.getElementById('submit').style.display = '';
-    window.document.documentElement.scrollTop = 0;
-  }
-
-  function back(){
-    document.getElementById('postQ').style.display = '';
-    document.getElementById('demo').style.display = 'none';
-    document.getElementById('previous').style.display = 'none';
-    document.getElementById('next').style.display = '';
-    document.getElementById('submit').style.display = 'none';
-  }
-
   $(function(){
-    proactivityList = ["2-1 我認為機器人主動向顧客介紹商品", "2-2 我認為機器人主動幫助顧客解決所遇到的問題", "2-3 我認為機器人主動讓顧客瞭解如何操作頁面功能", "2-4 整體而言，我認為機器人主動向顧客提供服務"];
-    intimacyList = ["3-1 我認為機器人會和顧客分享他的想法與情感", "3-2 我認為機器人對顧客是友善的", "3-3 我認為機器人試圖拉近與顧客的距離", "3-4 我認為機器人理解顧客的想法，知道顧客要什麼", "3-5 我認為機器人是關心顧客的"];
+    proactivityList = ["2-1 我認為機器人主動向我介紹商品", "2-2 我認為機器人主動幫助我解決所遇到的問題", "2-3 我認為機器人主動讓我瞭解如何操作頁面功能", "2-4 整體而言，我認為機器人主動向我提供服務"];
+    intimacyList = ["3-1 我認為機器人會和我分享他的想法與情感", "3-2 我認為機器人對我是友善的", "3-3 我認為機器人試圖拉近與我的距離", "3-4 我認為機器人理解我的想法，知道我要什麼", "3-5 我認為機器人是關心我的"];
     cogTrustList = ["4-1 我認為機器人有能力並有效地與我互動", "4-2 我認為機器人很好地發揮了提供幫助的作用", "4-3 整體而言，我認為機器人是有能力和專業的", "4-4 總的來説，我認為機器人提供很多有用的資訊（資訊豐富的）", "4-5 我認為機器人是真實地對待我", "4-6 我覺得這個機器人是誠實的", "4-7 我認為機器人提供公正的產品推薦", "4-8 我認為機器人是正直的"];
-    emoTrustList = ["5-1 在購物過程中，我對依靠機器人感到很自在", "5-2 在購物過程中，我對依靠機器人感到滿意"];
+    emoTrustList = ["5-1 在購物過程中，我對依靠機器人感到自在", "5-2 在購物過程中，我對依靠機器人感到滿意"];
     intentionList = ["6-1 假設我可以再次遇到這樣的機器人，我打算使用他", "6-2 假設我可以再次遇到這樣的機器人，我預期我會使用他", "6-3我對未來再次使用這樣的機器人有很大的興趣"];
 
     var proactivityLength = proactivityList.length;
@@ -217,11 +200,17 @@
     data["qTime"] = date;
     data["condition"] = condition;
     data["persona"] = localStorage.getItem('persona');
-    data['viewSource'] = localStorage.getItem('viewSource');
-    data["source"] = localStorage.getItem('source');
+    data['fromPreference'] = localStorage.getItem('fromPreference');
+    data["fromAllProduct"] = localStorage.getItem('fromAllProduct');
+    data["fromCategory"] = localStorage.getItem('fromCategory');
+    data["fromHotProduct"] = localStorage.getItem('fromHotProduct');
+    data["fromRecommend"] = localStorage.getItem('fromRecommend');
+    data['viewRecommend'] = localStorage.getItem("viewRecommend");
+    data['viewOther'] = localStorage.getItem("viewOther");
+    data["productCategory"] = localStorage.getItem('productCategory');
     data["addProduct"] = localStorage.getItem('addProduct');
-    data["getRecommend"] = localStorage.getItem('getRecommend');
-    data["getOther"] = localStorage.getItem('getOther');
+    data["buyRecommend"] = localStorage.getItem('getRecommend');
+    data["buyOther"] = localStorage.getItem('getOther');
     data["period"] = period;
 
     for (i = 0; i < formData.length; i++){
@@ -239,7 +228,7 @@
     }
 
     $.get(
-      'https://script.google.com/macros/s/AKfycbwYRjrmAQj7Pg6MSQRwWpOKuPEB-i0ItlCDaPgkIHa5Dc_Fnt0-rOY49URvrhECl-90og/exec', 
+      'https://script.google.com/macros/s/AKfycbw_vcVRqAouymoQAF8U95-Z4ZUKkNuLvdKRXbQ3J4CSeeJyxe7hcIHlXdJN_KsDHcdoKg/exec', 
       data,
       function(response) {
         if(response == "成功"){
