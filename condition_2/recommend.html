@@ -78,7 +78,9 @@
   ​<script>
     var productCategory = localStorage.getItem('findCategory');
     var productId = localStorage.getItem('findpid');
-    var recommendList = localStorage.getItem('recommendList');
+    var recommendList = ['1', '3', '5'];
+    localStorage.setItem('recommendList', recommendList);
+    // var recommendList = localStorage.getItem('recommendList');
     localStorage.setItem('viewRecommend', 1);
     var recommendCheck = [];
 
