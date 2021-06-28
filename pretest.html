@@ -265,11 +265,11 @@
       // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
-          $("input[type='checkbox']").change(function(){
+          // $("input[type='checkbox']").change(function(){
             if($("input[type='checkbox']:checked").length > 0){
               $("input[type='checkbox']").removeAttr('required');
             }
-          });
+          // });
 
           if (form.checkValidity() === false) {
             event.preventDefault();
