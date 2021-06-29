@@ -123,7 +123,7 @@
                 <b><p id="simulation"></p></b>
                 <p id="nextStep"></p>
               </div>
-              <div class="modal-footer" id="goButton"></div>
+              <div class="modal-footer" id="goButton" style="display: flex; justify-content: space-between;"></div>
             </div>
           </div>
         </div>
@@ -219,14 +219,14 @@
       if(getLost != 1){
         $('#simulation').html('前往商品的所在位置後，卻發現貨架上沒有想要的尺寸。');
         $('#nextStep').html('是否向機器人詢問商品存貨狀況？');
-        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="lostSize()">問題協助</button>');
-        setTimeout("document.getElementById('showLost').click()", 4500);
+        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal" onclick="browse()">瀏覽其他商品</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="lostSize()">問題協助</button>');
+        // setTimeout("document.getElementById('showLost').click()", 4500);
       }else{
         $('#simulation').html('<h5>前往商品的所在位置後，並選擇這雙鞋子做為想要購買的商品。</h5>');
         $('#nextStep').html('是否前往結帳？');
-        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">繼續逛逛</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="checkout()">前往結帳</button>')
-        setTimeout("document.getElementById('showLost').click()", 4500);
-        //setTimeout("window.location.href = 'funcSelect.html'", 5000);
+        $('#goButton').html('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal" onclick="browse()">瀏覽其他商品</button><button type="button" class="btn" style="background-color: #FAB00C; color: white" data-dismiss="modal" onclick="checkout()">前往結帳</button>')
+        // setTimeout("document.getElementById('showLost').click()", 4500);
+        // setTimeout("window.location.href = 'funcSelect.html'", 5000);
       }
     }
   }
@@ -239,6 +239,10 @@
     // localStorage.setItem('findCategory', productCategory);
     // localStorage.setItem('findpid', productId);
     window.location.href = 'lostSize.html?category='+ productCategory +'&id='+productId;
+  }
+
+  function browse(){
+    window.location.href = 'allProduct.html';
   }
 
   console.log(productCategory+productId);
