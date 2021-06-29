@@ -76,8 +76,8 @@
   </div>
     
   ​<script>
-    var productCategory = localStorage.getItem('findCategory');
-    var productId = localStorage.getItem('findpid');
+    var productCategory = localStorage.getItem('productCategory');
+    var productId = localStorage.getItem('productId');
     var recommendList = localStorage.getItem('recommendList');
     localStorage.setItem('viewRecommend', 1);
     var recommendCheck = [];
@@ -132,11 +132,28 @@
     
     $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+videoLink+'" type="video/mp4"></video>');
 
+    var pCategory = localStorage.getItem('productCategory');
+    var pName = localStorage.getItem('productName');
+    var selection = '';
+    if(pCategory == 'run'){
+      var cate = '慢跑';
+    }else if(pCategory == 'hiking'){
+      var cate = '登山健行';
+    }else{
+      var cate = '籃球';
+    }
+
+    if (pName != null && pCategory != null){
+      selection = '而您目前選擇的是'+cate+'鞋 ['+pName+']'
+    }else{
+      selection = '而您目前尚未選擇商品'
+    }
+
     var persona = localStorage.getItem('persona');
     if(persona == 0){
-      $('#taskInfo').append('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>而您目前尚未選擇商品</b></p>');
+      $('#taskInfo').append('<p>任務說明：為喜歡爬山的 Anna 挑選禮物，<b>'+selection+'</b></p>');
     }else{
-      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>而您目前尚未選擇商品</b></p>');
+      $('#taskInfo').append('<p>任務說明：為喜歡在球場馳騁的 Andy 挑選禮物，<b>'+selection+'</b></p>');
     }
 	</script>
 </body>
