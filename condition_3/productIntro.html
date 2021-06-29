@@ -188,6 +188,9 @@
       $('#intro').text(item.intro);
       $('#price').append('價錢：<span style="font-size: 40px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+item.price+'</span>');
     });
+
+    var introLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_intro.mp4';
+    $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+introLink+'" type="video/mp4"></video>');
   });
 
   robotIntro = localStorage.getItem('robotIntro');
@@ -200,13 +203,18 @@
     }
     else if(f == "findShoe"){
       var findLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_find.mp4';
-      $("#videoDisplay").html('<video width="100%" controls autoplay><source src="'+findLink+'" type="video/mp4" id="findVideo"></video>');
+      $("#videoDisplay").html('<video width="100%" controls autoplay id="videoClip"><source src="'+findLink+'" type="video/mp4" id="findVideo"></video>');
       localStorage.setItem('productCategory', productCategory);
       localStorage.setItem('productId', productId);
       localStorage.setItem('productName', productName);
       localStorage.setItem('productPrice', pPrice);
       localStorage.setItem('productImg', imgLink);
       taskinfo();
+
+      var videoClip = document.getElementById("videoClip");
+      videoClip.onended = function() {
+        document.getElementById('showLost').click();
+      };
 
       if(getLost != 1){
         $('#simulation').html('前往商品的所在位置後，卻發現貨架上沒有想要的尺寸。');
@@ -232,9 +240,6 @@
     // localStorage.setItem('findpid', productId);
     window.location.href = 'lostSize.html?category='+ productCategory +'&id='+productId;
   }
-
-  var introLink = '../video/neutral/'+productCategory+productId+'/'+productCategory+productId+'_intro.mp4';
-  $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+introLink+'" type="video/mp4"></video>');
 
   console.log(productCategory+productId);
 
