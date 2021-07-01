@@ -127,7 +127,6 @@
               </div>
             </div>
           </div>
-          
         </div>
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#recommendmodal" id="showModal" hidden>Open Modal</button>
         <div class="modal fade" id="recommendmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"width="80%">
@@ -192,6 +191,10 @@
       }
 
       var recommendList = localStorage.getItem('recommendList');
+      if(recommendList == null){
+        var recommendList = ['1','3','5'];
+        localStorage.setItem('recommendList', recommendList)
+      }
       var r = data.feed.entry;
       var ritems = [];
 
@@ -221,8 +224,7 @@
           }
           var Card = '<div class="card"><img src="'+ritems[i].imglink+'" class="card-img-top"><div class="card-body"><p class="card-title">'+pname+'</p><span class="card-text"> NT '+ritems[i].price+'</span></div></div>';
           $('#recommendProduct').append(Card);
-        }
-        
+        } 
       }
     });
 
