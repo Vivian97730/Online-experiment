@@ -46,14 +46,7 @@
       </div>
       <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
         <ul class = "nav nav-pills nav-fill">
-          <li class = "nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
-              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
-              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
-            </div>
-          </li>
+          <li id="caterecommend" class = "nav-item nav-link pageactive" style="border-radius: 0px;"></li>
           <li class = "nav-item" >
             <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
           </li>
@@ -121,6 +114,16 @@
       }
 
       $("#videoDisplay").append('<video width="100%" controls autoplay><source src="'+videoLink+'" type="video/mp4" id=""></video>');
+
+      if(categoryRecommend == 'run'){
+        var cate = '慢跑';
+      }else if(categoryRecommend == 'hiking'){
+        var cate = '登山健行';
+      }else{
+        var cate = '籃球';
+      }
+      $('#caterecommend').text(cate + ' 推薦商品');
+
     })
 
     var persona = localStorage.getItem('persona');
