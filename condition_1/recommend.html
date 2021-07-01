@@ -49,14 +49,7 @@
       </div>
       <div style = "background-color: rgb(50, 49, 49); margin-top: 0.5%;">
         <ul class = "nav nav-pills nav-fill">
-          <li class = "nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">運動分類</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="./category.html?category=run">慢跑</a>
-              <a class="dropdown-item" href="./category.html?category=hiking">登山健行</a>
-              <a class="dropdown-item" href="./category.html?category=basketball">籃球</a>
-            </div>
-          </li>
+          <li id="caterecommend" class = "nav-item nav-link pageactive" style="border-radius: 0px;"></li>
           <li class = "nav-item" >
             <a class="nav-link" href="./hotProduct.html">熱銷商品</a>
           </li>
@@ -84,8 +77,8 @@
     localStorage.setItem('viewRecommend', 1);
     var recommendCheck = [];
 
-    $(function() {        
-      $('html, body').animate({scrollTop: 1000}, 300);
+    $(function() {  
+      $('#mainPage').animate({scrollTop: 1000}, 300);     
       $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
         console.log(data);
         var r = data.feed.entry;
@@ -144,6 +137,8 @@
     }else{
       var cate = '籃球';
     }
+
+    $('#caterecommend').text(cate + ' 推薦商品');
 
     if (pName != null && pCategory != null){
       selection = '而您目前選擇的是'+cate+'鞋 ['+pName+']'

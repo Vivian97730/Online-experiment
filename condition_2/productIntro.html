@@ -123,7 +123,7 @@
                 <b><p id="simulation"></p></b>
                 <p id="nextStep"></p>
               </div>
-              <div class="modal-footer" id="goButton" style="display: flex; justify-content: space-between;"></div>
+              <div class="modal-footer" id="goButton"></div>
             </div>
           </div>
         </div>
@@ -189,7 +189,7 @@
       $('#price').append('價錢：<span style="font-size: 40px; color: #FAB00C; font-weight: bold; margin-left: 20px;">NT$ '+item.price+'</span>');
     });
 
-    var introLink = '../video/'+productCategory+productId+'.mp4';
+    var introLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_intro_PI.mp4';
     $("#videoDisplay").html('<video width="100%" id="productIntro" controls autoplay><source src="'+introLink+'" type="video/mp4"></video>');
   });
 

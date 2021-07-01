@@ -117,21 +117,17 @@
             <div class="col-sm-6" id="productimg"></div>
             <div class="col-sm-6" style="padding-left: 20px; word-break:break-all">
               <h4 id="name"></h4><br>
-              <div>
-                <h5 id="wait">確認店內庫存中，請稍候</h5>
-                <p style="margin-top: 30px; display: none;" id="sizetitle">
+              <h5 id="wait">確認店內庫存中，請稍候</h5>
+              <div id="size" style="display: none;">
+                <p style="margin-top: 30px;">
                   剩餘尺寸：
                 </p>
-                <p id="sizeinfo" style="margin-top: 30px; display: none"></p>
+                <p id="sizeinfo" style="margin-top: 30px;"></p>
+                <button type="button" class="btn btn-lg" style="background-color: #FAB00C; color: white; width: 100%; margin-top: 12%;" onclick="javascript:document.getElementById('showModal').click()">看看推薦商品</button>
               </div>
             </div>
           </div>
-          <div class="row" style="margin-top: 50px;">
-            <button type="button" class="btn btn-lg btn-outline-dark" style="width: 45%;" onclick="other();">看看其他商品</button>
-            <button type="button" class="btn btn-lg" style="background-color: #FAB00C; color: white; width: 45%; margin-left: 10%;" onclick="recommend();">看看推薦商品</button>
-          </div>
         </div>
-        
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#recommendmodal" id="showModal" hidden>Open Modal</button>
         <div class="modal fade" id="recommendmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"width="80%">
           <div class="modal-dialog" role="document">
@@ -145,7 +141,7 @@
               <div class="modal-body" id="recommendProduct" style="text-align: center;"></div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" onclick="other()">看看其他商品</button>
-                <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="recommend()"> 看看推薦商品</button>
+                <button type="button" class="btn" style="background-color: #FAB00C; color: white" onclick="recommend()"> 前往推薦商品</button>
               </div>
             </div>
           </div>
@@ -253,8 +249,8 @@
 
   function showSize(){
     document.getElementById('wait').style.display = 'none';
-    document.getElementById('sizetitle').style.display = 'block';
-    document.getElementById('sizeinfo').style.display = 'block';
+    // document.getElementById('sizetitle').style.display = 'block';
+    document.getElementById('size').style.display = 'block';
     // setTimeout("document.getElementById('showModal').click()", 10000);
   }
 
@@ -266,7 +262,7 @@
 
   // setTimeout('showSize();', 6000);
   // setTimeout("document.getElementById('submitInfo').style.display = 'none'", 5000);
-  setTimeout("document.getElementById('lostContent').style.display = ''", 5000);
+  // setTimeout("document.getElementById('lostContent').style.display = ''", 5000);
 
   var lostLink = '../video/intimate/'+productCategory+productId+'/'+productCategory+productId+'_lostSize_AI.mp4';
   $("#videoDisplay").html('<video width="100%" controls autoplay id="videoid"><source src="'+lostLink+'" type="video/mp4" id=""></video>');
