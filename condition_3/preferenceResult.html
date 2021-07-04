@@ -72,7 +72,7 @@
     console.log(categoryRecommend);
     
     $(function() {
-      $('html, body').animate({scrollTop: 1000}, 500);
+      // $('html, body').animate({scrollTop: 1000}, 500);
       $.get('https://spreadsheets.google.com/feeds/list/1Ai3QhD8590Uip6TCRmXm_fArYAeYQP4tc5a20_EfL6Y/1/public/values?alt=json', function(data) {
         console.log(data);
         var d = data.feed.entry;
