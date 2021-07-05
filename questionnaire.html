@@ -30,7 +30,12 @@
     form{
       font-size: 20px;
     }
+    label{
+      font-size: 18px;
+    }
     .customalign{
+      margin: auto;
+      width: 90%;
       display: flex; 
       justify-content: space-between; 
     }
@@ -160,7 +165,7 @@
     var proactivityLength = proactivityList.length;
     var code = "P"
     for(var i = 1; i <= proactivityLength; i++){
-      $(".proactivity").append('<div>'+ proactivityList[i-1] +'</div><div class="form-group customalign"><label class="itemlabel">非常不同意</label><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'1" value="1" required><label class="form-check-label" for="'+ code +'_'+ i +'1"> 1</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'2" value="2"><label class="form-check-label" for="'+ code +'_'+ i +'2"> 2</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'3" value="3"><label class="form-check-label" for="'+ code +'_'+ i +'3"> 3</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'4" value="4"><label class="form-check-label" for="'+ code +'_'+ i +'4"> 4</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'5" value="5"><label class="form-check-label" for="'+ code +'_'+ i +'5"> 5</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'6" value="6"><label class="form-check-label" for="'+ code +'_'+ i +'6"> 6</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'7" value="7"><label class="form-check-label" for="'+ code +'_'+ i +'7"> 7</label></div><label class="itemlabel">非常同意</label>');
+      $(".proactivity").append('<div>'+ proactivityList[i-1] +'</div><div class="form-group customalign"><label class="itemlabel">非常不同意</label><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'1" value="1" required><label class="form-check-label" for="'+ code +'_'+ i +'1"> 1</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'2" value="2"><label class="form-check-label" for="'+ code +'_'+ i +'2"> 2</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'3" value="3"><label class="form-check-label" for="'+ code +'_'+ i +'3"> 3</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'4" value="4"><label class="form-check-label" for="'+ code +'_'+ i +'4"> 4</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'5" value="5"><label class="form-check-label" for="'+ code +'_'+ i +'5"> 5</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'6" value="6"><label class="form-check-label" for="'+ code +'_'+ i +'6"> 6</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="'+ code +'_'+ i +'" id="'+ code +'_'+ i +'7" value="7"><label class="form-check-label" for="'+ code +'_'+ i +'7"> 7</label></div><label class="itemlabel">非常同意</label></div>');
     }
 
     var intimacyLength = intimacyList.length;
