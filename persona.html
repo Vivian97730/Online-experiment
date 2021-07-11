@@ -58,6 +58,10 @@
   var persona = '';
   persona = Math.floor(Math.random()*2);
   condition = Math.floor(Math.random()*4) + 1;
+  if(condition == 3){
+    condition = 2;
+  }
+
   if(persona == 0){
     $('#persona').append('<img src="./img/persona_hiking.png" alt="" width="40%">');
     $('#personaInfo').append('<p>Anna</p><p>34 歲 科技業上班族</p><p>在休假時我喜歡到山林間遊走，清幽的環境與濕氣讓人心曠神怡。放慢腳步，看著溪水的流動、觀察山林裡的花草樹木，在山裡享受大自然的奧妙，在庸碌的生活中找到一絲喘息的空間。</p>');
